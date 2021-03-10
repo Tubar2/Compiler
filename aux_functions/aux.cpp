@@ -83,7 +83,7 @@ int execDirective(const table::Operation& directive, const table::Operands& oper
     }
     if (directive == "space"){
         // TODO: Substituir por "00" ao invés de "xx"
-        line.emplace_back("xx");
+        line.emplace_back("00");
         return 1;
     }
     if (directive == "const"){

@@ -1,7 +1,7 @@
 #include "aux_functions/aux.hpp"
 
 
-#define FPATH "../test_2.asm"
+#define FPATH "../test.asm"
 
 int main() {
     // Criar um vetor com linhas de Instruções
