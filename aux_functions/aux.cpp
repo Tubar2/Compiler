@@ -177,8 +177,9 @@ void removePendency(const std::vector<std::vector<std::string> *>& obj_file){
     for (auto pendency : table::pendencies){
         int flag {0}, i;
         // Iterar sob cada símbolo pendente
-        // TODO: Otimizar para i>1
-        for ( i=pendency.pendency->size(); i>0; i--){
+        // Otimizado para i>2, pois  0  1   2    3    4    5   símbolos podem começar no máximo em i=2
+        //                          End xx inst simb,simb,simb
+        for ( i=pendency.pendency->size(); i>2; i--){
             auto temp = (*(pendency.pendency))[i-1];
             // Se o simbolo está na tabela de símbolos substituir pela sua posição
             if (table::symbols.find((*(pendency.pendency))[i-1]) != table::symbols.end()){
