@@ -105,12 +105,8 @@ int execDirective(const table::Operation& directive, const table::Operands& oper
 int execInstruction(const table::Operation& operation, const table::Operands& operands, std::vector<std::string> * line, int lineCounter){
     int flag {0};
     line->push_back(table::inst_set[operation].opcode_num);
-    // TODO: Erro na qtd de tokens
     // Introduzindo cada operando no vetor-linha de operação
-    int tokens{0};
     for (auto & token : operands){
-        // TODO: Da pra remover o tokens
-        tokens++;
         // Adiconar simbolos não definidos em uma lista de pendencias
         if (table::symbols.find(token) == table::symbols.end()){
             if (!flag) {
@@ -122,10 +118,10 @@ int execInstruction(const table::Operation& operation, const table::Operands& op
         }
         line->push_back(std::to_string(table::symbols[token]));
     }
-    if (tokens != table::inst_set[operation].size-1){
+    if (operands.size() != table::inst_set[operation].size-1){
         table::errors.push_back({
             "Instrução '" + operation + "' com número ilegal de operandos. Esperava: " +
-        std::to_string(table::inst_set[operation].size-1) + ". Recebeu: " + std::to_string(tokens),
+        std::to_string(table::inst_set[operation].size-1) + ". Recebeu: " + std::to_string(operands.size()),
         "Sintático", lineCounter});
     }
     return table::inst_set[operation].size;
@@ -193,6 +189,7 @@ void removePendency(const std::vector<std::vector<std::string> *>& obj_file){
         }
         if (!flag){
             // TODO: Recuperar qual símbolo não foi definido. Ideia: Colocar um else após o if símbolo está na tabela
+            // TODO: Instrução com 2 simbolos não definidos recebe apenas 1. (eg. 'copy N3,N4' diz que apenas um símbolo não existe, não ambos)
             table::errors.push_back({"Símbolo não definido", "Semântico", pendency.line });
         }
     }
