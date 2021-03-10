@@ -1,11 +1,14 @@
 ; Arquivo sem erros
 
-SECTION DATA
-N1: const 2
-N2: space
 
 SECTION TEXT
 rot:
 jmp rot
-rot: jmp n1
+jmp rot
+copy n1,n2
 stop
+
+SECTION DATA
+N1: const 2
+N2: space
+

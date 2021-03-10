@@ -175,23 +175,23 @@ std::vector<std::vector<std::string> *> secondPass(const std::vector<table::Inst
 
 void removePendency(const std::vector<std::vector<std::string> *>& obj_file){
     for (auto pendency : table::pendencies){
-        int flag {0}, i;
+        std::vector<std::string> pendentSymbols {};
         // Iterar sob cada símbolo pendente
-        // Otimizado para i>2, pois  0  1   2    3    4    5   símbolos podem começar no máximo em i=2
+        // Otimizado para i>3, pois  0  1   2    3    4    5   símbolos podem começar no máximo em i=3
         //                          End xx inst simb,simb,simb
-        for ( i=pendency.pendency->size(); i>2; i--){
-            auto temp = (*(pendency.pendency))[i-1];
+        for (int i=pendency.pendency->size(); i>3; i--){
             // Se o simbolo está na tabela de símbolos substituir pela sua posição
             if (table::symbols.find((*(pendency.pendency))[i-1]) != table::symbols.end()){
-
                 (*(pendency.pendency))[i-1] = std::to_string(table::symbols[(*(pendency.pendency))[i-1]]);
-                flag = 1;
+            } else {
+                pendentSymbols.push_back((*(pendency.pendency))[i-1]);
             }
         }
-        if (!flag){
-            // TODO: Recuperar qual símbolo não foi definido. Ideia: Colocar um else após o if símbolo está na tabela
-            // TODO: Instrução com 2 simbolos não definidos recebe apenas 1. (eg. 'copy N3,N4' diz que apenas um símbolo não existe, não ambos)
-            table::errors.push_back({"Símbolo não definido", "Semântico", pendency.line });
+        if (!pendentSymbols.empty()){
+            // Recuperar qua(l/is) símbolo/s não fo(i/ram) definido/s
+            for (const auto& symbol : pendentSymbols){
+                table::errors.push_back({"Símbolo '" + symbol + "' não definido", "Sintático", pendency.line});
+            }
         }
     }
 }
