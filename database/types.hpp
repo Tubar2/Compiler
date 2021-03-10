@@ -15,8 +15,10 @@ namespace table {
     //////////////////////////////////
 
     // Aliases para tpos string
-    typedef std::string Opcode_Name, Opcode_Num, Label, Directive_Name, Comment, Operation, Operands;
+    typedef std::string Opcode_Name, Opcode_Num, Label, Directive_Name, Comment, Operation;
     typedef int addr;
+
+    typedef std::vector<std::string> Operands;
 
     // Estrutura de uma instrução
     typedef struct Instruction {

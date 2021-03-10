@@ -1,9 +1,8 @@
 ; Arquivo sem erros
 
 SECTION DATA
-N1: const 34
-;N2:
-;N3: const 34
+N2: space
 
 SECTION TEXT
-copy N1,N1
+copy n2,n2
+stop

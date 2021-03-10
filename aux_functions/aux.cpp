@@ -8,10 +8,21 @@
 // Checar se o label foi corretamente criado
 table::Label checkLabel(std::string & word, int lineCounter){
     if(isdigit(word[0])){
+        // TODO: Adicionar qual nome escrito errado
         table::errors.push_back({"Erro na nomenclatura do label", "Sintático", lineCounter});
     }
     word.pop_back(); // Remove ':'
     return word;
+}
+
+table::Operands createOperands(const std::string& operands_string){
+    table::Operands operands {};
+    std::istringstream iss {operands_string};
+    std::string operand {};
+    while (std::getline(iss, operand, ',')){
+        operands.push_back(operand);
+    }
+    return operands;
 }
 
 // Lê um arquivo de testo e popula um vetor com cada linha de instrução
@@ -47,7 +58,7 @@ void readFile(const std::string& filename, std::vector<table::Instruction> & ins
                 if (operation.empty()){
                     operation = word;
                 } else {
-                    operands = word;
+                    operands = createOperands(word);
                 }
             }
         }
@@ -59,10 +70,9 @@ void readFile(const std::string& filename, std::vector<table::Instruction> & ins
 }
 
 int execDirective(const table::Operation& directive, const table::Operands& operands, std::vector<std::string> & line, int lineCounter){
-    // TODO: Erro quanto a diretiva const
     int numOperands = table::directive_set[directive];
     if (numOperands != operands.size()){
-        table::errors.push_back({"Diretiva " + directive + " com número ilegal de operandos. Esperava: " +
+        table::errors.push_back({"Diretiva '" + directive + "' com número ilegal de operandos. Esperava: " +
                                  std::to_string(numOperands) + ". Recebeu: " + std::to_string(operands.size()),
                                  "Sintático", lineCounter});
     }
@@ -72,22 +82,23 @@ int execDirective(const table::Operation& directive, const table::Operands& oper
         return 1;
     }
     if (directive == "const"){
-        // TODO: Checar por um número não decimal
-        line.push_back(operands);
+        // TODO: Checar por um número não decimal e 0 operandos
+        // TODO: Ver se precisa adicionar para a tabela de erros o const vazio
+        if (operands.empty()){return 0;}
+        line.push_back(operands[0]);
         return 1;
     }
     return 0;
 }
 
 int execInstruction(const table::Operation& operation, const table::Operands& operands, std::vector<std::string> * line, int lineCounter){
-    std::istringstream iss{operands};
-    std::string token {};
     int flag {0};
     line->push_back(table::inst_set[operation].opcode_num);
     // TODO: Erro na qtd de tokens
     // Introduzindo cada operando no vetor-linha de operação
     int tokens{0};
-    while (std::getline(iss, token, ',')){
+    for (auto & token : operands){
+        // TODO: Da pra remover o tokens
         tokens++;
         // Adiconar simbolos não definidos em uma lista de pendencias
         if (table::symbols.find(token) == table::symbols.end()){
@@ -102,7 +113,7 @@ int execInstruction(const table::Operation& operation, const table::Operands& op
     }
     if (tokens != table::inst_set[operation].size-1){
         table::errors.push_back({
-            "Instrução " + operation + " com número ilegal de operandos. Esperava: " +
+            "Instrução '" + operation + "' com número ilegal de operandos. Esperava: " +
         std::to_string(table::inst_set[operation].size-1) + ". Recebeu: " + std::to_string(tokens),
         "Sintático", lineCounter});
     }
@@ -129,7 +140,7 @@ std::vector<std::vector<std::string> *> secondPass(const std::vector<table::Inst
                 table::symbols.insert({instruction.label, posCounter});
             } else {
                 // Segunda aparição => Erro de redefinição
-                table::errors.push_back({"Símbolo " + instruction.label + " redefinido", "Semântico",
+                table::errors.push_back({"Símbolo '" + instruction.label + "' redefinido", "Semântico",
                                          lineCounter});
             }
         }
@@ -157,16 +168,21 @@ std::vector<std::vector<std::string> *> secondPass(const std::vector<table::Inst
 
 void removePendency(const std::vector<std::vector<std::string> *>& obj_file){
     for (auto pendency : table::pendencies){
-        int flag {0};
+        int flag {0}, i;
         // Iterar sob cada símbolo pendente
-        for (auto i=pendency.pendency->size(); i>0; i--){
+        // TODO: Otimizar para i>1
+        for ( i=pendency.pendency->size(); i>0; i--){
+            auto temp = (*(pendency.pendency))[i-1];
             // Se o simbolo está na tabela de símbolos substituir pela sua posição
             if (table::symbols.find((*(pendency.pendency))[i-1]) != table::symbols.end()){
+
                 (*(pendency.pendency))[i-1] = std::to_string(table::symbols[(*(pendency.pendency))[i-1]]);
+                // TODO; ver se a troca de 1 por i não crasha o programa
                 flag = 1;
             }
         }
         if (!flag){
+            // TODO: Recuperar qual símbolo não foi definido. Ideia: Colocar um else após o if símbolo está na tabela
             table::errors.push_back({"Símbolo não definido", "Semântico", pendency.line });
         }
     }
