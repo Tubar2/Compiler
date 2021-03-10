@@ -82,7 +82,7 @@ int execDirective(const table::Operation& directive, const table::Operands& oper
                                  "Sintático", lineCounter});
     }
     if (directive == "space"){
-        // Substituir por "00" ao invés de "xx"
+        // TODO: Substituir por "00" ao invés de "xx"
         line.emplace_back("xx");
         return 1;
     }
