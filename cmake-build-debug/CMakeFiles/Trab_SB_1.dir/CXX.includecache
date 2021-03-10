@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux_functions/aux.cpp
+aux.hpp
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux_functions/aux.hpp
+../database/tables.hpp
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/database/tables.hpp
+
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux_functions/aux.hpp
+fstream
+-
+iostream
+-
+sstream
+-
+../database/types.hpp
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/database/types.hpp
+
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/database/tables.hpp
+types.hpp
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/database/types.hpp
+
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/database/types.hpp
+vector
+-
+map
+-
+string
+-
+
