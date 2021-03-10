@@ -8,8 +8,7 @@
 // Checar se o label foi corretamente criado
 table::Label checkLabel(std::string & word, int lineCounter){
     if(isdigit(word[0])){
-        // TODO: Adicionar qual nome escrito errado
-        table::errors.push_back({"Erro na nomenclatura do label", "Sintático", lineCounter});
+        table::errors.push_back({"Erro na nomenclatura do label '" + word + "'", "Sintático", lineCounter});
     }
     word.pop_back(); // Remove ':'
     return word;
@@ -69,6 +68,12 @@ void readFile(const std::string& filename, std::vector<table::Instruction> & ins
     file.close(); // Fecha arquivo
 }
 
+bool is_decimal(std::string num){
+    std::string::const_iterator it = num.begin();
+    while (it != num.end() && (std::isdigit(*it) || *it == '-')) ++it;
+    return !num.empty() && it == num.end();
+}
+
 int execDirective(const table::Operation& directive, const table::Operands& operands, std::vector<std::string> & line, int lineCounter){
     int numOperands = table::directive_set[directive];
     if (numOperands != operands.size()){
@@ -82,9 +87,15 @@ int execDirective(const table::Operation& directive, const table::Operands& oper
         return 1;
     }
     if (directive == "const"){
-        // TODO: Checar por um número não decimal e 0 operandos
-        // TODO: Ver se precisa adicionar para a tabela de erros o const vazio
+        // Checar por 0 operandos ou um número não decimal
         if (operands.empty()){return 0;}
+        if (!is_decimal(operands[0])) {
+            table::errors.push_back({
+                "Operando inválido na diretiva const. Esperava decimal. Recebeu: '" + operands[0] + "'",
+                "Sintático",
+                lineCounter
+            });
+            return 0;}
         line.push_back(operands[0]);
         return 1;
     }
@@ -177,7 +188,6 @@ void removePendency(const std::vector<std::vector<std::string> *>& obj_file){
             if (table::symbols.find((*(pendency.pendency))[i-1]) != table::symbols.end()){
 
                 (*(pendency.pendency))[i-1] = std::to_string(table::symbols[(*(pendency.pendency))[i-1]]);
-                // TODO; ver se a troca de 1 por i não crasha o programa
                 flag = 1;
             }
         }
