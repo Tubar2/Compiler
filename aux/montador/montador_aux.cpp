@@ -82,7 +82,6 @@ int execDirective(const table::Operation& directive, const table::Operands& oper
                                  "Sintático", lineCounter});
     }
     if (directive == "space"){
-        // TODO: Substituir por "00" ao invés de "xx"
         line.emplace_back("00");
         return 1;
     }
@@ -103,6 +102,7 @@ int execDirective(const table::Operation& directive, const table::Operands& oper
 }
 
 int execInstruction(const table::Operation& operation, const table::Operands& operands, std::vector<std::string> * line, int lineCounter){
+    // TODO: Checar por operando ilegal na instrução, eg 'copy 1, n1'
     int flag {0};
     line->push_back(table::inst_set[operation].opcode_num);
     // Introduzindo cada operando no vetor-linha de operação
@@ -174,6 +174,7 @@ std::vector<std::vector<std::string> *> secondPass(const std::vector<table::Inst
 }
 
 void removePendency(const std::vector<std::vector<std::string> *>& obj_file){
+    // TODO: bug na instrução copy quando há apenas 1 símbolo não definido
     for (auto pendency : table::pendencies){
         std::vector<std::string> pendentSymbols {};
         // Iterar sob cada símbolo pendente
