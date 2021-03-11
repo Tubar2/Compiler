@@ -73,6 +73,7 @@ CMAKE_BINARY_DIR = /Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debu
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/simulador.dir/all
 all: CMakeFiles/Trab_SB_1.dir/all
 
 .PHONY : all
@@ -83,9 +84,37 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
+clean: CMakeFiles/simulador.dir/clean
 clean: CMakeFiles/Trab_SB_1.dir/clean
 
 .PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/simulador.dir
+
+# All Build rule for target.
+CMakeFiles/simulador.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulador.dir/build.make CMakeFiles/simulador.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulador.dir/build.make CMakeFiles/simulador.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles --progress-num=4,5,6,7 "Built target simulador"
+.PHONY : CMakeFiles/simulador.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/simulador.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/simulador.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/simulador.dir/rule
+
+# Convenience name for target.
+simulador: CMakeFiles/simulador.dir/rule
+
+.PHONY : simulador
+
+# clean rule for target.
+CMakeFiles/simulador.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulador.dir/build.make CMakeFiles/simulador.dir/clean
+.PHONY : CMakeFiles/simulador.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/Trab_SB_1.dir

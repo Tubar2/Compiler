@@ -2,8 +2,8 @@
 // Created by Ricardo Santos on 09/03/21.
 //
 
-#include "aux.hpp"
-#include "../database/tables.hpp"
+#include "montador_aux.hpp"
+#include "../../database/tables.hpp"
 
 // Checar se o label foi corretamente criado
 table::Label checkLabel(std::string & word, int lineCounter){
@@ -222,8 +222,6 @@ void createObj(const std::vector<std::vector<std::string> *>& obj_file, const st
     }
     out_file.close();
 }
-
-
 
 
 

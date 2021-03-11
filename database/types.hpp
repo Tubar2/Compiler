@@ -34,13 +34,14 @@ namespace table {
         Opcode_Num opcode_num;  // Instrução em decimal
     } Opcode_Struct;
 
-    // Estrutura de uma instrução
+    // Estrutura de um erro <nome, tipo, linha de ocorrência>
     typedef struct {
         std::string error;
         std::string error_type;
         int line;
     } Error;
 
+    // Estrutura de uma pendência <linha de ocorrência, endereço da linha>
     typedef struct {
         int line;
         std::vector<std::string> * pendency;

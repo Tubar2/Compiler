@@ -37,6 +37,48 @@
 					<DistClean command="/usr/bin/make -j12 -f &quot;/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="simulador">
+				<Option output="/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/simulador" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 simulador"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="simulador/fast">
+				<Option output="/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/simulador" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 simulador/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 			<Target title="Trab_SB_1">
 				<Option output="/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/Trab_SB_1" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug"/>
@@ -80,20 +122,33 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux_functions/aux.cpp">
+		<Unit filename="/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/montador_aux.cpp">
+			<Option target="simulador"/>
 			<Option target="Trab_SB_1"/>
 		</Unit>
-		<Unit filename="/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux_functions/aux.hpp">
+		<Unit filename="/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/montador_aux.hpp">
+			<Option target="simulador"/>
 			<Option target="Trab_SB_1"/>
+		</Unit>
+		<Unit filename="/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/simulador/simulador_aux.cpp">
+			<Option target="simulador"/>
+		</Unit>
+		<Unit filename="/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/simulador/simulador_aux.hpp">
+			<Option target="simulador"/>
 		</Unit>
 		<Unit filename="/Users/ricardosantos/Documents/UnB/Trab_SB_1/database/tables.hpp">
+			<Option target="simulador"/>
 			<Option target="Trab_SB_1"/>
 		</Unit>
 		<Unit filename="/Users/ricardosantos/Documents/UnB/Trab_SB_1/database/types.hpp">
+			<Option target="simulador"/>
 			<Option target="Trab_SB_1"/>
 		</Unit>
 		<Unit filename="/Users/ricardosantos/Documents/UnB/Trab_SB_1/montador.cpp">
 			<Option target="Trab_SB_1"/>
+		</Unit>
+		<Unit filename="/Users/ricardosantos/Documents/UnB/Trab_SB_1/simulador.cpp">
+			<Option target="simulador"/>
 		</Unit>
 		<Unit filename="/Users/ricardosantos/Documents/UnB/Trab_SB_1/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>

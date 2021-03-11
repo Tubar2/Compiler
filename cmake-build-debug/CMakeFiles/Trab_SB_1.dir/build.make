@@ -90,29 +90,29 @@ CMakeFiles/Trab_SB_1.dir/montador.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Trab_SB_1.dir/montador.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ricardosantos/Documents/UnB/Trab_SB_1/montador.cpp -o CMakeFiles/Trab_SB_1.dir/montador.cpp.s
 
-CMakeFiles/Trab_SB_1.dir/aux_functions/aux.cpp.o: CMakeFiles/Trab_SB_1.dir/flags.make
-CMakeFiles/Trab_SB_1.dir/aux_functions/aux.cpp.o: ../aux_functions/aux.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Trab_SB_1.dir/aux_functions/aux.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Trab_SB_1.dir/aux_functions/aux.cpp.o -c /Users/ricardosantos/Documents/UnB/Trab_SB_1/aux_functions/aux.cpp
+CMakeFiles/Trab_SB_1.dir/aux/montador/montador_aux.cpp.o: CMakeFiles/Trab_SB_1.dir/flags.make
+CMakeFiles/Trab_SB_1.dir/aux/montador/montador_aux.cpp.o: ../aux/montador/montador_aux.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Trab_SB_1.dir/aux/montador/montador_aux.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Trab_SB_1.dir/aux/montador/montador_aux.cpp.o -c /Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/montador_aux.cpp
 
-CMakeFiles/Trab_SB_1.dir/aux_functions/aux.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Trab_SB_1.dir/aux_functions/aux.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ricardosantos/Documents/UnB/Trab_SB_1/aux_functions/aux.cpp > CMakeFiles/Trab_SB_1.dir/aux_functions/aux.cpp.i
+CMakeFiles/Trab_SB_1.dir/aux/montador/montador_aux.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Trab_SB_1.dir/aux/montador/montador_aux.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/montador_aux.cpp > CMakeFiles/Trab_SB_1.dir/aux/montador/montador_aux.cpp.i
 
-CMakeFiles/Trab_SB_1.dir/aux_functions/aux.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Trab_SB_1.dir/aux_functions/aux.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ricardosantos/Documents/UnB/Trab_SB_1/aux_functions/aux.cpp -o CMakeFiles/Trab_SB_1.dir/aux_functions/aux.cpp.s
+CMakeFiles/Trab_SB_1.dir/aux/montador/montador_aux.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Trab_SB_1.dir/aux/montador/montador_aux.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/montador_aux.cpp -o CMakeFiles/Trab_SB_1.dir/aux/montador/montador_aux.cpp.s
 
 # Object files for target Trab_SB_1
 Trab_SB_1_OBJECTS = \
 "CMakeFiles/Trab_SB_1.dir/montador.cpp.o" \
-"CMakeFiles/Trab_SB_1.dir/aux_functions/aux.cpp.o"
+"CMakeFiles/Trab_SB_1.dir/aux/montador/montador_aux.cpp.o"
 
 # External object files for target Trab_SB_1
 Trab_SB_1_EXTERNAL_OBJECTS =
 
 Trab_SB_1: CMakeFiles/Trab_SB_1.dir/montador.cpp.o
-Trab_SB_1: CMakeFiles/Trab_SB_1.dir/aux_functions/aux.cpp.o
+Trab_SB_1: CMakeFiles/Trab_SB_1.dir/aux/montador/montador_aux.cpp.o
 Trab_SB_1: CMakeFiles/Trab_SB_1.dir/build.make
 Trab_SB_1: CMakeFiles/Trab_SB_1.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable Trab_SB_1"

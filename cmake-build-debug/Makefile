@@ -131,6 +131,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named simulador
+
+# Build rule for target.
+simulador: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 simulador
+.PHONY : simulador
+
+# fast build rule for target.
+simulador/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulador.dir/build.make CMakeFiles/simulador.dir/build
+.PHONY : simulador/fast
+
+#=============================================================================
 # Target rules for targets named Trab_SB_1
 
 # Build rule for target.
@@ -143,32 +156,62 @@ Trab_SB_1/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/build
 .PHONY : Trab_SB_1/fast
 
-aux_functions/aux.o: aux_functions/aux.cpp.o
+aux/montador/montador_aux.o: aux/montador/montador_aux.cpp.o
 
-.PHONY : aux_functions/aux.o
+.PHONY : aux/montador/montador_aux.o
 
 # target to build an object file
-aux_functions/aux.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/aux_functions/aux.cpp.o
-.PHONY : aux_functions/aux.cpp.o
+aux/montador/montador_aux.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulador.dir/build.make CMakeFiles/simulador.dir/aux/montador/montador_aux.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/aux/montador/montador_aux.cpp.o
+.PHONY : aux/montador/montador_aux.cpp.o
 
-aux_functions/aux.i: aux_functions/aux.cpp.i
+aux/montador/montador_aux.i: aux/montador/montador_aux.cpp.i
 
-.PHONY : aux_functions/aux.i
+.PHONY : aux/montador/montador_aux.i
 
 # target to preprocess a source file
-aux_functions/aux.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/aux_functions/aux.cpp.i
-.PHONY : aux_functions/aux.cpp.i
+aux/montador/montador_aux.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulador.dir/build.make CMakeFiles/simulador.dir/aux/montador/montador_aux.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/aux/montador/montador_aux.cpp.i
+.PHONY : aux/montador/montador_aux.cpp.i
 
-aux_functions/aux.s: aux_functions/aux.cpp.s
+aux/montador/montador_aux.s: aux/montador/montador_aux.cpp.s
 
-.PHONY : aux_functions/aux.s
+.PHONY : aux/montador/montador_aux.s
 
 # target to generate assembly for a file
-aux_functions/aux.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/aux_functions/aux.cpp.s
-.PHONY : aux_functions/aux.cpp.s
+aux/montador/montador_aux.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulador.dir/build.make CMakeFiles/simulador.dir/aux/montador/montador_aux.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/aux/montador/montador_aux.cpp.s
+.PHONY : aux/montador/montador_aux.cpp.s
+
+aux/simulador/simulador_aux.o: aux/simulador/simulador_aux.cpp.o
+
+.PHONY : aux/simulador/simulador_aux.o
+
+# target to build an object file
+aux/simulador/simulador_aux.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulador.dir/build.make CMakeFiles/simulador.dir/aux/simulador/simulador_aux.cpp.o
+.PHONY : aux/simulador/simulador_aux.cpp.o
+
+aux/simulador/simulador_aux.i: aux/simulador/simulador_aux.cpp.i
+
+.PHONY : aux/simulador/simulador_aux.i
+
+# target to preprocess a source file
+aux/simulador/simulador_aux.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulador.dir/build.make CMakeFiles/simulador.dir/aux/simulador/simulador_aux.cpp.i
+.PHONY : aux/simulador/simulador_aux.cpp.i
+
+aux/simulador/simulador_aux.s: aux/simulador/simulador_aux.cpp.s
+
+.PHONY : aux/simulador/simulador_aux.s
+
+# target to generate assembly for a file
+aux/simulador/simulador_aux.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulador.dir/build.make CMakeFiles/simulador.dir/aux/simulador/simulador_aux.cpp.s
+.PHONY : aux/simulador/simulador_aux.cpp.s
 
 montador.o: montador.cpp.o
 
@@ -197,6 +240,33 @@ montador.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/montador.cpp.s
 .PHONY : montador.cpp.s
 
+simulador.o: simulador.cpp.o
+
+.PHONY : simulador.o
+
+# target to build an object file
+simulador.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulador.dir/build.make CMakeFiles/simulador.dir/simulador.cpp.o
+.PHONY : simulador.cpp.o
+
+simulador.i: simulador.cpp.i
+
+.PHONY : simulador.i
+
+# target to preprocess a source file
+simulador.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulador.dir/build.make CMakeFiles/simulador.dir/simulador.cpp.i
+.PHONY : simulador.cpp.i
+
+simulador.s: simulador.cpp.s
+
+.PHONY : simulador.s
+
+# target to generate assembly for a file
+simulador.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulador.dir/build.make CMakeFiles/simulador.dir/simulador.cpp.s
+.PHONY : simulador.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -206,12 +276,19 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Trab_SB_1"
-	@echo "... aux_functions/aux.o"
-	@echo "... aux_functions/aux.i"
-	@echo "... aux_functions/aux.s"
+	@echo "... simulador"
+	@echo "... aux/montador/montador_aux.o"
+	@echo "... aux/montador/montador_aux.i"
+	@echo "... aux/montador/montador_aux.s"
+	@echo "... aux/simulador/simulador_aux.o"
+	@echo "... aux/simulador/simulador_aux.i"
+	@echo "... aux/simulador/simulador_aux.s"
 	@echo "... montador.o"
 	@echo "... montador.i"
 	@echo "... montador.s"
+	@echo "... simulador.o"
+	@echo "... simulador.i"
+	@echo "... simulador.s"
 .PHONY : help
 
 
