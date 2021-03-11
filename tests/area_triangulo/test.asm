@@ -1,3 +1,4 @@
+section text
 INPUT B
 INPUT H
 LOAD B
@@ -6,6 +7,8 @@ DIV DOIS
 STORE R
 OUTPUT R
 STOP
+
+section data
 B: SPACE
 H: SPACE
 R: SPACE

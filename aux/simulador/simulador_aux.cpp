@@ -69,5 +69,7 @@ bool exec(int opcode, std::vector<int>& memory) {
 }
 
 void runProgram( std::vector<int>& memory){
+    while (memory[PC] != infinity) {PC++;}
+    PC++;
     while ( exec(memory[PC], memory) );
 }

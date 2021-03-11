@@ -6,7 +6,7 @@
 #include <sstream>
 #include "aux/simulador/simulador_aux.hpp"
 
-#define FPATH "../montador.obj"
+#define FPATH "../tests/test_1/montador.obj"
 
 int main(){
     // TODO: Usar argc e argv
@@ -17,16 +17,22 @@ int main(){
         std::cerr << "Erro ao abrir arquivo" << std::endl;
         std::exit(1);
     }
-    std::vector<int> memory{};
     std::string line, lixo;
-    int num;
+    int num {};
+    std::vector<int> memory{}, data{};
     // Lendo arquvo linha por linha e salvando linha em 'line'
     while (std::getline(file, line)){
         std::istringstream iss {line};
         // Remove o 'End xx'
         iss >> lixo >> lixo;
+        bool flag {false};
         while (iss >> num){
             memory.push_back(num);
+            flag = true;
+        }
+        if (!flag){
+            // Início da seção de texto
+            memory.push_back(infinity);
         }
     }
 //    int i {0};

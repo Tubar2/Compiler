@@ -132,12 +132,20 @@ std::vector<std::vector<std::string> *> secondPass(const std::vector<table::Inst
     std::vector<std::vector<std::string> *> obj_file {};
     // Iterando sobre cada linha de instrução
     for (const auto& instruction : instructions){
-        // Caso da operação ser uma Linha VAzia, só comentário ou seção
+        // Caso da operação ser uma Linha Vazia, só comentário
         if (
             ( !instruction.comment.empty() && instruction.label.empty() && instruction.operation.empty() )  ||
-            ( instruction.operation == "section" )                                                          ||
             ( instruction.comment.empty() && instruction.label.empty() && instruction.operation.empty() )
             ) { lineCounter++; continue; }
+        // Caso da seção
+        if (instruction.operation == "section"){
+            if (instruction.operands[0] == "text"){
+                auto * line = new std::vector<std::string>{"End", std::to_string(posCounter)};
+                obj_file.push_back(line);
+                posCounter++;
+            }
+            lineCounter++; continue;
+        }
         auto * line = new std::vector<std::string>{"End", std::to_string(posCounter)};
         // Checando a existência de label na instrução
         if (!instruction.label.empty()){

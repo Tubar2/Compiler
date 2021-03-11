@@ -1,7 +1,7 @@
 #include "aux/montador/montador_aux.hpp"
 
 
-#define FPATH "../test.asm"
+#define FPATH "../tests/test_1/test.asm"
 
 int main() {
     // Criar um vetor com linhas de Instruções
@@ -20,7 +20,7 @@ int main() {
     if (checkForErrors()) return 0;
 
     // Cria o arquivo de saída .obj caso nào há erros
-    createObj(obj_file, "../montador.obj");
+    createObj(obj_file, "../tests/test_1/montador.obj");
 
     for (auto line : obj_file){
         for (auto &str : *line){
