@@ -4,6 +4,9 @@ aux = $@.o $@_aux.o -o $@
 
 all: montador simulador
 
+run: montador simulador
+	@./montador test.asm
+	@./simulador montador.obj
 
 montador: montador.o montador_aux.o
 	g++ $(aux)
