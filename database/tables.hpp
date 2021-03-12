@@ -11,6 +11,9 @@ namespace table {
     /* TABELAS E LISTAS AUXILIARES */
     /////////////////////////////////
 
+    // Flag de inserção no início ou fim da lista de instruções
+    static bool text_insertion_flag {false};
+
     // Tabela de diretivas
     static std::map<Directive_Name, int> directive_set{
             {"space", 0},

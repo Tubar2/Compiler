@@ -1,3 +1,9 @@
+section data
+B: SPACE
+H: SPACE
+R: SPACE
+DOIS: CONST 2
+
 section text
 INPUT B
 INPUT H
@@ -7,9 +13,3 @@ DIV DOIS
 STORE R
 OUTPUT R
 STOP
-
-section data
-B: SPACE
-H: SPACE
-R: SPACE
-DOIS: CONST 2

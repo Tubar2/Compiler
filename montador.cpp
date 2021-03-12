@@ -1,14 +1,14 @@
 #include "aux/montador/montador_aux.hpp"
 
 
-#define FPATH "../tests/test_1/test.asm"
+#define FPATH "./test.asm"
 
 int main() {
     // Criar um vetor com linhas de Instruções
     std::vector<table::Instruction> instructions {};
     // TODO: Correct filename to use argc and argv
     // Popula o vetor de instruções
-    readFile(FPATH, instructions);
+    instructions = readFile(FPATH);
 
     // Aplica o algoritmo de segunda passagem modificado
     auto obj_file = secondPass(instructions);
@@ -20,13 +20,12 @@ int main() {
     if (checkForErrors()) return 0;
 
     // Cria o arquivo de saída .obj caso nào há erros
-    createObj(obj_file, "../tests/test_1/montador.obj");
+    createObj(obj_file, "../montador.obj");
 
     for (auto line : obj_file){
         for (auto &str : *line){
             std::cout << str << " ";
         }
-        std::cout << std::endl;
     }
     return 0;
 }

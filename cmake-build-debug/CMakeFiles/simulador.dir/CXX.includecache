@@ -6,6 +6,28 @@
 
 #IncludeRegexTransform: 
 
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/montador_aux.cpp
+montador_aux.hpp
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/montador_aux.hpp
+../../database/tables.hpp
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/database/tables.hpp
+
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/montador_aux.hpp
+fstream
+-
+iostream
+-
+sstream
+-
+../../database/types.hpp
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/database/types.hpp
+
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/simulador/simulador_aux.cpp
+simulador_aux.hpp
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/simulador/simulador_aux.hpp
+../../database/tables.hpp
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/database/tables.hpp
+
 /Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/simulador/simulador_aux.hpp
 iostream
 -
@@ -14,11 +36,15 @@ vector
 string
 -
 
-/Users/ricardosantos/Documents/UnB/Trab_SB_1/simulador.cpp
-fstream
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/database/tables.hpp
+types.hpp
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/database/types.hpp
+
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/database/types.hpp
+vector
 -
-sstream
+map
 -
-aux/simulador/simulador_aux.hpp
-/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/simulador/simulador_aux.hpp
+string
+-
 

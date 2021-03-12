@@ -19,13 +19,18 @@ table::Operands createOperands(const std::string& operands_string){
     std::istringstream iss {operands_string};
     std::string operand {};
     while (std::getline(iss, operand, ',')){
+        if (operand == "text") {table::text_insertion_flag = true;}
         operands.push_back(operand);
     }
     return operands;
 }
 
+void pushInstruction(std::vector<table::Instruction> & instructions, const table::Instruction& instruction){
+    instructions.push_back(instruction);
+}
+
 // Lê um arquivo de testo e popula um vetor com cada linha de instrução
-void readFile(const std::string& filename, std::vector<table::Instruction> & instructions){
+std::vector<table::Instruction> readFile(const std::string& filename){
     // Abrindo arquivo para leitura e checando se foi aberto corretamente
     std::ifstream file {filename};
     if (!file) {
@@ -34,38 +39,43 @@ void readFile(const std::string& filename, std::vector<table::Instruction> & ins
         std::exit(1);
     }
     std::string line, word;
-    int lineCounter{1}, endCounter{0};
+    int lineCounter{1};
+    std::vector<table::Instruction> data{}, text{};
     // Lendo arquvo linha por linha e salvando linha em 'line'
     while (std::getline(file, line)){
-        std::istringstream iss{line};   // string stream para leitura
-        table::Comment comment {};      // String de Comentários
-        table::Label label {};           // String do label
-        table::Operation operation {};  // String da operação
-        table::Operands operands {};    // Vetor de operandos
+        std::istringstream iss{line};       // string stream para leitura
+        table::Instruction instruction {};  // Instrução para ser populada
         // Espaços em branco são ignorados ao passarem pelo stream
         while (iss >> word) {
             // Checa por comentários
-            if (word[0] == ';') { comment = word; break; };
+            if (word[0] == ';') { instruction.comment = word; break; };
             // Transforma cada palavra para minusculo
             std::transform(word.begin(), word.end(), word.begin(), ::tolower);
             // Verifica se é um label ao procurar por ':'
             if (word.find(':')!= std::string::npos){
-                label = checkLabel(word, lineCounter);
+                instruction.label = checkLabel(word, lineCounter);
             } else {
                 // Caso não for um label ou um comentário então é uma parte da
                 // estrutura da operação.
-                if (operation.empty()){
-                    operation = word;
+                if (instruction.operation.empty()){
+                    instruction.operation = word;
                 } else {
-                    operands = createOperands(word);
+                    instruction.operands = createOperands(word);
                 }
             }
         }
+        instruction.line = lineCounter++;
         // Popula o vetor com cada instrução devidamente estruturada
-        instructions.push_back(table::Instruction{comment, label, operation, operands});
-        lineCounter++;
+        if (table::text_insertion_flag){
+            pushInstruction(text, instruction);
+        } else {
+            pushInstruction(data, instruction);
+        }
     }
+    // Conjunto de instruções = text + data
+    text.insert(text.end(), data.begin(), data.end());
     file.close(); // Fecha arquivo
+    return text;
 }
 
 bool is_decimal(std::string num){
@@ -90,7 +100,7 @@ int execDirective(const table::Operation& directive, const table::Operands& oper
         if (operands.empty()){return 0;}
         if (!is_decimal(operands[0])) {
             table::errors.push_back({
-                "Operando inválido na diretiva const. Esperava decimal. Recebeu: '" + operands[0] + "'",
+                "Operando inválida na diretiva 'const'. Esperava decimal. Recebeu: '" + operands[0] + "'",
                 "Sintático",
                 lineCounter
             });
@@ -128,25 +138,17 @@ int execInstruction(const table::Operation& operation, const table::Operands& op
 }
 
 std::vector<std::vector<std::string> *> secondPass(const std::vector<table::Instruction> & instructions){
-    int lineCounter{1}, posCounter{0};
+    int posCounter{0};
     std::vector<std::vector<std::string> *> obj_file {};
     // Iterando sobre cada linha de instrução
     for (const auto& instruction : instructions){
-        // Caso da operação ser uma Linha Vazia, só comentário
+        // Caso da operação ser uma Linha Vazia, só comentário ou só seção
         if (
             ( !instruction.comment.empty() && instruction.label.empty() && instruction.operation.empty() )  ||
+            (instruction.operation == "section")                                                            ||
             ( instruction.comment.empty() && instruction.label.empty() && instruction.operation.empty() )
-            ) { lineCounter++; continue; }
-        // Caso da seção
-        if (instruction.operation == "section"){
-            if (instruction.operands[0] == "text"){
-                auto * line = new std::vector<std::string>{"End", std::to_string(posCounter)};
-                obj_file.push_back(line);
-                posCounter++;
-            }
-            lineCounter++; continue;
-        }
-        auto * line = new std::vector<std::string>{"End", std::to_string(posCounter)};
+            ) { continue; }
+        auto * line = new std::vector<std::string>{};
         // Checando a existência de label na instrução
         if (!instruction.label.empty()){
             // Procurando pela label na tabela de simbolos
@@ -156,27 +158,26 @@ std::vector<std::vector<std::string> *> secondPass(const std::vector<table::Inst
             } else {
                 // Segunda aparição => Erro de redefinição
                 table::errors.push_back({"Símbolo '" + instruction.label + "' redefinido", "Semântico",
-                                         lineCounter});
+                                         instruction.line});
             }
         }
         // Checando caso a operação da instrução existe
-        if (instruction.operation.empty()){ lineCounter++;continue;}
+        if (instruction.operation.empty()){ continue;}
         if (table::inst_set.find(instruction.operation) == table::inst_set.end()){
             // Caso não existe, checar se é uma diretiva
             if (table::directive_set.find(instruction.operation) == table::directive_set.end()) {
                 // Operação não identificada
-                table::errors.push_back({"Operação '" + instruction.operation + "' não identificada", "Semântico", lineCounter});
+                table::errors.push_back({"Operação '" + instruction.operation + "' não identificada", "Semântico", instruction.line});
             } else {
                 // Operação existe na tabela de diretivas
-                posCounter += execDirective( instruction.operation, instruction.operands, *line, lineCounter );
+                posCounter += execDirective( instruction.operation, instruction.operands, *line, instruction.line );
             }
         } else {
             // Operação existe na tabela de instruções
-            posCounter += execInstruction(instruction.operation, instruction.operands, line, lineCounter);
+            posCounter += execInstruction(instruction.operation, instruction.operands, line, instruction.line);
 
         }
         obj_file.push_back(line);
-        lineCounter++;
     }
     return obj_file;
 }
@@ -186,9 +187,7 @@ void removePendency(const std::vector<std::vector<std::string> *>& obj_file){
     for (auto pendency : table::pendencies){
         std::vector<std::string> pendentSymbols {};
         // Iterar sob cada símbolo pendente
-        // Otimizado para i>3, pois  0  1   2    3    4    5   símbolos podem começar no máximo em i=3
-        //                          End xx inst simb,simb,simb
-        for (int i=pendency.pendency->size(); i>3; i--){
+        for (int i=pendency.pendency->size(); i>1; i--){
             // Se o simbolo está na tabela de símbolos substituir pela sua posição
             if (table::symbols.find((*(pendency.pendency))[i-1]) != table::symbols.end()){
                 (*(pendency.pendency))[i-1] = std::to_string(table::symbols[(*(pendency.pendency))[i-1]]);
@@ -207,6 +206,7 @@ void removePendency(const std::vector<std::vector<std::string> *>& obj_file){
 
 bool checkForErrors(){
     if (!table::errors.empty()){
+        std::sort(table::errors.begin(), table::errors.end());
         for (const auto & error : table::errors){
             std::cout << "Erro " << error.error_type << ": " << error.error  << " na linha "
             << std::to_string(error.line) << std::endl;
@@ -226,7 +226,6 @@ void createObj(const std::vector<std::vector<std::string> *>& obj_file, const st
             for (auto &str : *line){
                 out_file << str << " ";
             }
-            out_file << std::endl;
         }
     }
     out_file.close();

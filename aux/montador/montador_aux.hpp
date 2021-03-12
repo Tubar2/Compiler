@@ -10,8 +10,8 @@
 #include <sstream>
 #include "../../database/types.hpp"
 
-// Lê o arquivo .asm e ppopula o vetor de Instrução
-void readFile(const std::string& filename, std::vector<table::Instruction> & instructions);
+// Lê o arquivo .asm e retorna um vetor de Instruções
+std::vector<table::Instruction> readFile(const std::string& filename);
 
 // Aplica o algoritmo de primeira passagem e retorna um vetor instruções pre-.obj
 std::vector<std::vector<std::string> *> secondPass(const std::vector<table::Instruction>& instructions);

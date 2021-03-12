@@ -1,3 +1,11 @@
+section data
+zero: const 0
+one: const 1
+older: space
+old: space
+new: space
+limit: space
+
 section text
 copy:
     copy zero,older
@@ -17,11 +25,3 @@ front:
 final:
     output limit
     stop
-
-section data
-zero: const 0
-one: const 1
-older: space
-old: space
-new: space
-limit: space

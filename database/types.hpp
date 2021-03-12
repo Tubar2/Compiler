@@ -16,7 +16,7 @@ namespace table {
 
     // Aliases para tpos string
     typedef std::string Opcode_Name, Opcode_Num, Label, Directive_Name, Comment, Operation;
-    typedef int addr;
+    typedef int addr, Inst_line;
 
     typedef std::vector<std::string> Operands;
 
@@ -26,6 +26,7 @@ namespace table {
         Label label;
         Operation operation;
         Operands operands;
+        Inst_line line;
     } Instruction;
 
     // Estrtura do opcode
@@ -35,10 +36,12 @@ namespace table {
     } Opcode_Struct;
 
     // Estrutura de um erro <nome, tipo, linha de ocorrência>
-    typedef struct {
+    typedef struct Error {
         std::string error;
         std::string error_type;
         int line;
+        // Overloading o opeardo '<' para poder organizar a lista de erros por linha
+        bool operator< (const Error &err) const {return line < err.line ;}
     } Error;
 
     // Estrutura de uma pendência <linha de ocorrência, endereço da linha>
