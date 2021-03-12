@@ -1,14 +1,15 @@
 #include "aux/montador/montador_aux.hpp"
 
 
-#define FPATH "./test.asm"
-
-int main() {
+int main(int argc, char *argv[]) {
+    if (argc != 2) {
+        std::cerr << "Número de argumentos inválidos" << std::endl;
+        exit(1);
+    }
     // Criar um vetor com linhas de Instruções
     std::vector<table::Instruction> instructions {};
-    // TODO: Correct filename to use argc and argv
     // Popula o vetor de instruções
-    instructions = readFile(FPATH);
+    instructions = readFile(argv[1]);
 
     // Aplica o algoritmo de segunda passagem modificado
     auto obj_file = secondPass(instructions);
@@ -20,12 +21,7 @@ int main() {
     if (checkForErrors()) return 0;
 
     // Cria o arquivo de saída .obj caso nào há erros
-    createObj(obj_file, "../montador.obj");
+    createObj(obj_file, "montador.obj");
 
-    for (auto line : obj_file){
-        for (auto &str : *line){
-            std::cout << str << " ";
-        }
-    }
     return 0;
 }
