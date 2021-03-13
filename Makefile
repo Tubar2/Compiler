@@ -27,4 +27,4 @@ simulador_aux.o: ./aux/simulador/simulador_aux.cpp ./database/tables.hpp ./datab
 	$(compile_cpp) ./aux/simulador/simulador_aux.cpp
 
 clean:
-	rm -v *.o montador simulador montador.obj
+	rm -vf *.o montador simulador *.obj *.out
