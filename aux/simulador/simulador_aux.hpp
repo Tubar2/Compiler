@@ -8,9 +8,10 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <fstream>
 
 static const int infinity = INFINITY;
 
-void runProgram( std::vector<int>& memory);
+void runProgram( std::vector<int>& memory, const std::string& filename);
 
 #endif //TRAB_SB_1_SIMULADOR_AUX_HPP

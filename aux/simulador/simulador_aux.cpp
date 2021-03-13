@@ -8,7 +8,8 @@
 int ACC {0};
 int PC {0};
 
-bool exec(int opcode, std::vector<int>& memory) {
+bool exec(int opcode, std::vector<int> &memory, std::ofstream & ofstream) {
+    std::string output;
     switch (opcode) {
         case 1:                             // ADD
             ACC += memory[memory[PC+1]];    // ACC <- ACC + mem(op)
@@ -56,7 +57,8 @@ bool exec(int opcode, std::vector<int>& memory) {
             std::cin >> memory[memory[PC+1]];   // mem(op) <- entrada
             break;
         case 13:                         // OUTPUT
-            std::cout << memory[memory[PC+1]] << std::endl; // saída <- mem(op)
+            ofstream << memory[memory[PC+1]] << std::endl; // saída <- mem(op)
+            output = "Output: " + std::to_string(memory[memory[PC+1]]) + "\n"; // saída <- mem(op)
             break;
         case 14:                         // STOP
             return false;
@@ -65,9 +67,16 @@ bool exec(int opcode, std::vector<int>& memory) {
             break;
     }
     PC += table::inst_size[opcode];
+    std::cout << "PC <- " << PC << "\nACC <- " << ACC << "\n" << output << std::endl;
     return true;
 }
 
-void runProgram( std::vector<int>& memory){
-    while ( exec(memory[PC], memory) );
+void runProgram( std::vector<int>& memory, const std::string& filename){
+    std::ofstream out_file {filename, std::ios::trunc};
+    if (!out_file) {
+        std::cerr << "Error creating exit file " << filename << std::endl;
+        exit(1);
+    }
+
+    while (exec(memory[PC], memory, out_file));
 }
