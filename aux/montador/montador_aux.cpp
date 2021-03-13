@@ -8,7 +8,7 @@
 // Checar se o label foi corretamente criado
 table::Label checkLabel(std::string & word, int lineCounter){
     if(isdigit(word[0])){
-        table::errors.push_back({"Erro na nomenclatura do label '" + word + "'", "Sintático", lineCounter});
+        table::errors.push_back({"Erro na nomenclatura do label '" + word + "'", "Léxico", lineCounter});
     }
     word.pop_back(); // Remove ':'
     return word;
@@ -117,6 +117,13 @@ int execInstruction(const table::Operation& operation, const table::Operands& op
     line->push_back(table::inst_set[operation].opcode_num);
     // Introduzindo cada operando no vetor-linha de operação
     for (auto & token : operands){
+        if ( std::isdigit(token[0])){
+            table::errors.push_back({
+                "Tipo de operando '" + token + "' inválido",
+                "Sintático",
+                lineCounter
+            });
+        }
         // Adiconar simbolos não definidos em uma lista de pendencias
         if (table::symbols.find(token) == table::symbols.end()){
             if (!flag) {
@@ -198,7 +205,7 @@ void removePendency(const std::vector<std::vector<std::string> *>& obj_file){
         if (!pendentSymbols.empty()){
             // Recuperar qua(l/is) símbolo/s não fo(i/ram) definido/s
             for (const auto& symbol : pendentSymbols){
-                table::errors.push_back({"Símbolo '" + symbol + "' não definido", "Sintático", pendency.line});
+                table::errors.push_back({"Símbolo '" + symbol + "' não definido", "Semântico", pendency.line});
             }
         }
     }
