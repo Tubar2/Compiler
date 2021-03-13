@@ -12,8 +12,13 @@ int main(int argc, char *argv[]){
         std::cerr << "Número de argumentos inválidos" << std::endl;
         exit(1);
     }
+    std::string filename;
+    for (int i = 0; i < strlen(argv[1]); ++i) {
+        if (argv[1][i] == '.') break;
+        filename += (argv[1][i]);
+    }
     // Abrindo arquivo objeto para leitura
-    std::ifstream file {argv[1]};
+    std::ifstream file {filename+".obj"};
     if (!file) {
         // Arquivo não encotrado
         std::cerr << "Erro ao abrir arquivo" << std::endl;
@@ -29,7 +34,7 @@ int main(int argc, char *argv[]){
         memory.push_back(num);
     }
 
-    runProgram(memory);
+    runProgram(memory, filename+".out");
 
     return 0;
 }

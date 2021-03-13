@@ -7,7 +7,7 @@
 
 int ACC {0};
 int PC {0};
-//uint16_t memory[216];
+
 bool exec(int opcode, std::vector<int>& memory) {
     switch (opcode) {
         case 1:                             // ADD

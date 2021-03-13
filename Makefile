@@ -1,4 +1,3 @@
-aux = $(wildcard ./aux/$@/$@_aux.cpp)
 compile_cpp = g++ -Wall -std=c++11 -c
 aux = $@.o $@_aux.o -o $@
 
@@ -24,7 +23,7 @@ montador_aux.o: ./aux/montador/montador_aux.cpp ./database/tables.hpp ./database
 simulador.o: simulador.cpp
 	$(compile_cpp) simulador.cpp
 
-simulador_aux.o: ./aux/montador/montador_aux.cpp ./database/tables.hpp ./database/tables.hpp
+simulador_aux.o: ./aux/simulador/simulador_aux.cpp ./database/tables.hpp ./database/tables.hpp
 	$(compile_cpp) ./aux/simulador/simulador_aux.cpp
 
 clean:
