@@ -48,7 +48,7 @@ std::vector<table::Instruction> readFile(const std::string& filename){
         // Espaços em branco são ignorados ao passarem pelo stream
         while (iss >> word) {
             // Checa por comentários
-            if (word[0] == ';') { instruction.comment = word; break; };
+            if (word[0] == ';') { instruction.comment = word; break; }
             // Transforma cada palavra para minusculo
             std::transform(word.begin(), word.end(), word.begin(), ::tolower);
             // Verifica se é um label ao procurar por ':'
@@ -112,7 +112,6 @@ int execDirective(const table::Operation& directive, const table::Operands& oper
 }
 
 int execInstruction(const table::Operation& operation, const table::Operands& operands, std::vector<std::string> * line, int lineCounter){
-    // TODO: Checar por operando ilegal na instrução, eg 'copy 1, n1'
     int flag {0};
     line->push_back(table::inst_set[operation].opcode_num);
     // Introduzindo cada operando no vetor-linha de operação
@@ -190,7 +189,6 @@ std::vector<std::vector<std::string> *> secondPass(const std::vector<table::Inst
 }
 
 void removePendency(const std::vector<std::vector<std::string> *>& obj_file){
-    // TODO: bug na instrução copy quando há apenas 1 símbolo não definido
     for (auto pendency : table::pendencies){
         std::vector<std::string> pendentSymbols {};
         // Iterar sob cada símbolo pendente
@@ -215,8 +213,10 @@ bool checkForErrors(){
     if (!table::errors.empty()){
         std::sort(table::errors.begin(), table::errors.end());
         for (const auto & error : table::errors){
-            std::cout << "Erro " << error.error_type << ": " << error.error  << " na linha "
-            << std::to_string(error.line) << std::endl;
+            std::cout << std::left;
+            std::cout << std::setfill(' ') << std::setw(21) << "Erro "+error.error_type +": ";
+            std::cout << std::setfill(' ') << std::setw(13)<< "Linha: "+std::to_string(error.line) + " ";
+            std::cout << error.error << std::endl;
         }
         return true;
     }
