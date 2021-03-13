@@ -1,27 +1,17 @@
 section data
-zero: const 0
-one: const 1
-older: space
-old: space
-new: space
-limit: space
+AUX: SPACE
+N: SPACE
+ONE: CONST 1
 
 section text
-copy:
-    copy zero,older
-    copy one,old
-    input limit
-    output old
-front:
-    load older
-    add old
-    store new
-    sub limit
-    jmpp final
-    output new
-    copy old,older
-    copy new,old
-    jmp front
-final:
-    output limit
-    stop
+INPUT N
+LOAD N
+FAT: SUB ONE
+JMPZ FIM
+STORE AUX
+MUL N
+STORE N
+LOAD AUX
+JMP FAT
+FIM: OUTPUT N
+STOP
