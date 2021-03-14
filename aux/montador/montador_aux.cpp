@@ -11,6 +11,9 @@ table::Label checkLabel(std::string & word, int lineCounter){
         table::errors.push_back({"Erro na nomenclatura do label '" + word + "'", "Léxico", lineCounter});
     }
     word.pop_back(); // Remove ':'
+    if (word.length() > 50){
+        table::errors.push_back({"Nome do label excede limite de caractéres", "Léxico", lineCounter});
+    }
     return word;
 }
 
