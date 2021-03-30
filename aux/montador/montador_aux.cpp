@@ -32,6 +32,21 @@ void pushInstruction(std::vector<table::Instruction> & instructions, const table
     instructions.push_back(instruction);
 }
 
+void correctLabel(std::string & s){
+
+    const std::string WHITESPACE = " \n\r\t\f\v";
+    size_t start = s.find_first_not_of(WHITESPACE);
+    s = (start == std::string::npos) ? "" : s.substr(start);
+
+    auto foundLSpace = s.find(" :");
+    auto foundFSpace = s.find(' ');
+    if (foundLSpace != std::string::npos){
+        auto erase = foundLSpace - foundFSpace + 1;
+        s.erase(foundFSpace, erase);
+    }
+}
+
+
 // Lê um arquivo de testo e popula um vetor com cada linha de instrução
 std::vector<table::Instruction> readFile(const std::string& filename){
     // Abrindo arquivo para leitura e checando se foi aberto corretamente
@@ -41,14 +56,18 @@ std::vector<table::Instruction> readFile(const std::string& filename){
         std::cerr << "Erro ao abrir arquivo" << std::endl;
         std::exit(1);
     }
-    std::string line, word;
-    int lineCounter{1};
-    std::vector<table::Instruction> data{}, text{};
+
+    // Variáveis auxiliares
+    std::string line, word;     // 'Line' será a linha do arquivo e 'word' cada palavra separada por espaçp
+    int lineCounter{1};         // Contador de linha do arquivo texto
+    std::vector<table::Instruction> data{}, text{}; // Vetores com cada seção de dados e texto, respectivamente
+
     // Lendo arquvo linha por linha e salvando linha em 'line'
     while (std::getline(file, line)){
-        std::istringstream iss{line};       // string stream para leitura
+        correctLabel(line);              // corrige o label para casos como em "  label  :"
+        std::istringstream iss{line};       // string-stream para leitura
         table::Instruction instruction {};  // Instrução para ser populada
-        // Espaços em branco são ignorados ao passarem pelo stream
+        // Espaços em branco são ignorados ao irem para a stream
         while (iss >> word) {
             // Checa por comentários
             if (word[0] == ';') { instruction.comment = word; break; }
@@ -75,7 +94,7 @@ std::vector<table::Instruction> readFile(const std::string& filename){
             pushInstruction(data, instruction);
         }
     }
-    // Conjunto de instruções = text + data
+    // Conjunto de instruções = text + data (data no final)
     text.insert(text.end(), data.begin(), data.end());
     file.close(); // Fecha arquivo
     return text;

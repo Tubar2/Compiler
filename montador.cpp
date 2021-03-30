@@ -6,6 +6,7 @@ int main(int argc, char *argv[]) {
         std::cerr << "Número de argumentos inválidos" << std::endl;
         exit(1);
     }
+    // Removendo a extensão do nome do arquivo "<filename>.asm"
     std::string filename;
     for (int i = 0; i < strlen(argv[1]); ++i) {
         if (argv[1][i] == '.') break;
@@ -26,7 +27,7 @@ int main(int argc, char *argv[]) {
     if (checkForErrors()) return 0;
 
     // Cria o arquivo de saída .obj caso nào há erros
-    createObj(obj_file, filename+".obj");
+    createObj(obj_file, filename + ".obj");
 
     return 0;
 }
