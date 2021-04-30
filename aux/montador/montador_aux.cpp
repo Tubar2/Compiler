@@ -6,18 +6,23 @@
 #include "../../database/tables.hpp"
 
 // Checar se o label foi corretamente criado
-table::Label checkLabel(std::string & word, int lineCounter){
+table::Label checkLabel(table::Label & word, int lineCounter){
+    // Verifica se o primeiro caractér é um digito
     if(isdigit(word[0])){
-        table::errors.push_back({"Erro na nomenclatura do label '" + word + "'", "Léxico", lineCounter});
+        table::errorsList.push_back({"Erro na nomenclatura do label '" + word + "'", "Léxico", lineCounter});
     }
     word.pop_back(); // Remove ':'
+    // Verifica se o label possui menos que 50 caractéres
     if (word.length() > 50){
-        table::errors.push_back({"Nome do label excede limite de caractéres", "Léxico", lineCounter});
+        table::errorsList.push_back({"Nome do label excede limite de caractéres", "Léxico", lineCounter});
     }
     return word;
 }
 
+// Separa uma string com operandos pela '.'
+// "op1,op2" -> ["op1", "op2"]
 table::Operands createOperands(const std::string& operands_string){
+    // TODO: Alterar a função para popular as tabelas de definição e uso
     table::Operands operands {};
     std::istringstream iss {operands_string};
     std::string operand {};
@@ -34,7 +39,7 @@ void pushInstruction(std::vector<table::Instruction> & instructions, const table
 
 // Remove espaço em branco para evitar erros como
 // ["  Label:" ou "   Label:   " ou "  Label  : "] -> "Label:  "
-void correctLabel(std::string & s){
+void correctLabel(table::Label & s){
     const std::string WHITESPACE = " \n\r\t\f\v";
     size_t start = s.find_first_not_of(WHITESPACE);
     s = (start == std::string::npos) ? "" : s.substr(start);
@@ -68,6 +73,7 @@ table::Module readFile(const std::string& filename){
         correctLabel(line);              // Corrige labels que possuam espaço em branco
         std::istringstream iss{line};       // string-stream para leitura
         table::Instruction instruction {};  // Instrução para ser populada
+        bool labelInLine = false;           // Variável auxiliar para indicar se houve label na linha
         // Espaços em branco são ignorados ao irem para a stream
         while (iss >> word) {
             // Checa por comentários
@@ -78,8 +84,7 @@ table::Module readFile(const std::string& filename){
             if (word.find(':')!= std::string::npos){
                 instruction.label = checkLabel(word, lineCounter);
             } else {
-                // Caso não for um label ou um comentário então é uma parte da
-                // estrutura da operação.
+                // Caso não for um label ou um comentário então é uma parte da estrutura da operação
                 if (instruction.operation.empty()){
                     instruction.operation = word;
                 } else {
@@ -87,20 +92,22 @@ table::Module readFile(const std::string& filename){
                 }
             }
         }
-        instruction.line = lineCounter++;
-        // Popula o vetor com cada instrução devidamente estruturada
+        instruction.line = lineCounter++;   // Adiciona à estrutura da instrução, sua linha de ocorrência no arquivo
+        // Popula o semi-módulo com cada instrução devidamente estruturada
         if (table::text_insertion_flag){
             pushInstruction(text, instruction);
         } else {
             pushInstruction(data, instruction);
         }
     }
+    // TODO: Verificar como será feita a seção de dados e texto, pois isso pode quebrar o programa
     // Conjunto de instruções = text + data (data no final)
     text.insert(text.end(), data.begin(), data.end());
     file.close(); // Fecha arquivo
     return text;
 }
 
+// Verifica se uma string é um dígito
 bool is_decimal(std::string num){
     std::string::const_iterator it = num.begin();
     while (it != num.end() && (std::isdigit(*it) || *it == '-')) ++it;
@@ -110,7 +117,7 @@ bool is_decimal(std::string num){
 int execDirective(const table::Operation& directive, const table::Operands& operands, std::vector<std::string> & line, int lineCounter){
     int numOperands = table::directive_set[directive];
     if (numOperands != operands.size()){
-        table::errors.push_back({"Diretiva '" + directive + "' com número ilegal de operandos. Esperava: " +
+        table::errorsList.push_back({"Diretiva '" + directive + "' com número ilegal de operandos. Esperava: " +
                                  std::to_string(numOperands) + ". Recebeu: " + std::to_string(operands.size()),
                                  "Sintático", lineCounter});
     }
@@ -122,7 +129,7 @@ int execDirective(const table::Operation& directive, const table::Operands& oper
         // Checar por 0 operandos ou um número não decimal
         if (operands.empty()){return 0;}
         if (!is_decimal(operands[0])) {
-            table::errors.push_back({
+            table::errorsList.push_back({
                 "Operando inválida na diretiva 'const'. Esperava decimal. Recebeu: '" + operands[0] + "'",
                 "Sintático",
                 lineCounter
@@ -140,25 +147,25 @@ int execInstruction(const table::Operation& operation, const table::Operands& op
     // Introduzindo cada operando no vetor-linha de operação
     for (auto & token : operands){
         if ( std::isdigit(token[0])){
-            table::errors.push_back({
+            table::errorsList.push_back({
                 "Tipo de operando '" + token + "' inválido",
                 "Sintático",
                 lineCounter
             });
         }
         // Adiconar simbolos não definidos em uma lista de pendencias
-        if (table::symbols.find(token) == table::symbols.end()){
+        if (table::symbolsTable.find(token) == table::symbolsTable.end()){
             if (!flag) {
-                table::pendencies.push_back({lineCounter, line});
+                table::pendenciesList.push_back({lineCounter, line});
                 flag = 1;
             }
             line->push_back(token);
             continue;
         }
-        line->push_back(std::to_string(table::symbols[token]));
+        line->push_back(std::to_string(table::symbolsTable[token]));
     }
     if (operands.size() != table::inst_set[operation].size-1){
-        table::errors.push_back({
+        table::errorsList.push_back({
             "Instrução '" + operation + "' com número ilegal de operandos. Esperava: " +
         std::to_string(table::inst_set[operation].size-1) + ". Recebeu: " + std::to_string(operands.size()),
         "Sintático", lineCounter});
@@ -181,12 +188,12 @@ std::vector<std::vector<std::string> *> secondPass(const std::vector<table::Inst
         // Checando a existência de label na instrução
         if (!instruction.label.empty()){
             // Procurando pela label na tabela de simbolos
-            if (table::symbols.find(instruction.label) == table::symbols.end()){
+            if (table::symbolsTable.find(instruction.label) == table::symbolsTable.end()){
                 // Primeira aparição do label
-                table::symbols.insert({instruction.label, posCounter});
+                table::symbolsTable.insert({instruction.label, posCounter});
             } else {
                 // Segunda aparição => Erro de redefinição
-                table::errors.push_back({"Símbolo '" + instruction.label + "' redefinido", "Semântico",
+                table::errorsList.push_back({"Símbolo '" + instruction.label + "' redefinido", "Semântico",
                                          instruction.line});
             }
         }
@@ -196,7 +203,7 @@ std::vector<std::vector<std::string> *> secondPass(const std::vector<table::Inst
             // Caso não existe, checar se é uma diretiva
             if (table::directive_set.find(instruction.operation) == table::directive_set.end()) {
                 // Operação não identificada
-                table::errors.push_back({"Operação '" + instruction.operation + "' não identificada", "Semântico", instruction.line});
+                table::errorsList.push_back({"Operação '" + instruction.operation + "' não identificada", "Semântico", instruction.line});
             } else {
                 // Operação existe na tabela de diretivas
                 posCounter += execDirective( instruction.operation, instruction.operands, *line, instruction.line );
@@ -212,13 +219,13 @@ std::vector<std::vector<std::string> *> secondPass(const std::vector<table::Inst
 }
 
 void removePendency(const std::vector<std::vector<std::string> *>& obj_file){
-    for (auto pendency : table::pendencies){
+    for (auto pendency : table::pendenciesList){
         std::vector<std::string> pendentSymbols {};
         // Iterar sob cada símbolo pendente
         for (int i=pendency.pendency->size(); i>1; i--){
             // Se o simbolo está na tabela de símbolos substituir pela sua posição
-            if (table::symbols.find((*(pendency.pendency))[i-1]) != table::symbols.end()){
-                (*(pendency.pendency))[i-1] = std::to_string(table::symbols[(*(pendency.pendency))[i-1]]);
+            if (table::symbolsTable.find((*(pendency.pendency))[i-1]) != table::symbolsTable.end()){
+                (*(pendency.pendency))[i-1] = std::to_string(table::symbolsTable[(*(pendency.pendency))[i-1]]);
             } else {
                 pendentSymbols.push_back((*(pendency.pendency))[i-1]);
             }
@@ -226,16 +233,16 @@ void removePendency(const std::vector<std::vector<std::string> *>& obj_file){
         if (!pendentSymbols.empty()){
             // Recuperar qua(l/is) símbolo/s não fo(i/ram) definido/s
             for (const auto& symbol : pendentSymbols){
-                table::errors.push_back({"Símbolo '" + symbol + "' não definido", "Semântico", pendency.line});
+                table::errorsList.push_back({"Símbolo '" + symbol + "' não definido", "Semântico", pendency.line});
             }
         }
     }
 }
 
 bool checkForErrors(){
-    if (!table::errors.empty()){
-        std::sort(table::errors.begin(), table::errors.end());
-        for (const auto & error : table::errors){
+    if (!table::errorsList.empty()){
+        std::sort(table::errorsList.begin(), table::errorsList.end());
+        for (const auto & error : table::errorsList){
             std::cout << std::left;
             std::cout << std::setfill(' ') << std::setw(21) << "Erro "+error.error_type +": ";
             std::cout << std::setfill(' ') << std::setw(13)<< "Linha: "+std::to_string(error.line) + " ";
@@ -260,20 +267,3 @@ void createObj(const std::vector<std::vector<std::string> *>& obj_file, const st
     }
     out_file.close();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

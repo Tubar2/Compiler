@@ -22,9 +22,11 @@ int main(int argc, char *argv[]) {
         modules.push_back(readFile(filenames[i] + ".asm"));
     }
 
-
     // Aplica o algoritmo de segunda passagem modificado
-    auto obj_file = secondPass(instructions);
+    for (auto & module : modules) {
+//        auto obj_file = secondPass(instructions);
+        auto obj_file = secondPass(module);
+    }
 
     // Substitui os símbolos que não haviam sido definidos ainda
     removePendency(obj_file);

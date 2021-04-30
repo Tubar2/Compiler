@@ -19,7 +19,9 @@ namespace table {
             {"space", 0},
             {"const", 1},
             {"extern", 0},
-            {"public", 0}
+//            {"public", 0},
+            {"begin", 0},
+            {"end", 0},
     };
 
     // Tabela de instruções (mapeia nome_da_instrução -> {tamanho, número_da_intrução})
@@ -38,6 +40,7 @@ namespace table {
             {"input",  {2, "12"}},
             {"output", {2, "13"}},
             {"stop",   {1, "14"}},
+//            {"public", {0, "0"}},
     };
 
     // Mapeia o opcode (como um int) para o seu tamanho
