@@ -14,13 +14,15 @@ namespace table {
     // Flag de inserção no início ou fim da lista de instruções
     static bool text_insertion_flag {false};
 
-    // Tabela de diretivas
+    // Tabela de diretivas (mapeia nome_da_diretiva -> memória que ocupa)
     static std::map<Directive_Name, int> directive_set{
             {"space", 0},
             {"const", 1},
+            {"extern", 0},
+            {"public", 0}
     };
 
-    // Tabela de instruções
+    // Tabela de instruções (mapeia nome_da_instrução -> {tamanho, número_da_intrução})
     static std::map<Opcode_Name, Opcode_Struct> inst_set{
             {"add",    {2, "1"}},
             {"sub",    {2, "2"}},
@@ -38,6 +40,7 @@ namespace table {
             {"stop",   {1, "14"}},
     };
 
+    // Mapeia o opcode (como um int) para o seu tamanho
     static std::map<int, int> inst_size{
             {1, 2},
             {2, 2},
@@ -56,13 +59,20 @@ namespace table {
     };
 
     // Tabela de simbolos
-    static std::map<Label, addr> symbols{};
+    static std::map<Label, Value> symbolsTable{};
+
+    // Tabela de Uso
+    static std::map<Label, Address> usesTable {};
+
+    // Tabela de Definições
+    static std::map<Label, Address> definitionsTable {};
 
     // Lista de pendencias
-    static std::vector<Pendency> pendencies{};
+    static std::vector<Pendency> pendenciesList{};
 
     // Lista de erros
-    static std::vector<Error> errors{};
+    static std::vector<Error> errorsList{};
+
 }
 
 #endif //TRAB_SB_1_TABLES_HPP

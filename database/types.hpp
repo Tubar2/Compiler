@@ -14,23 +14,31 @@ namespace table {
     /* TIPOS E ESTRUTURA AUXILIARES */
     //////////////////////////////////
 
-    // Aliases para tpos string
+    // Aliases para tipos string
     typedef std::string Opcode_Name, Opcode_Num, Label, Directive_Name, Comment, Operation;
-    typedef int addr, Inst_line;
+    // Aliases para tipos int
+    typedef int Address, Inst_Line;
 
+    // Estrutura auxilar para identificar se o símbolo é externo
+    typedef struct Value {
+        Address addr;
+        bool isExtern;
+    } Value;
+
+    // Uma operação pode ter de 0-2 operandos
     typedef std::vector<std::string> Operands;
 
-    // Estrutura de uma instrução
+    // Estrutura de uma linha de instrução
     typedef struct Instruction {
         Comment comment;
         Label label;
         Operation operation;
         Operands operands;
-        Inst_line line;
+        Inst_Line line;
     } Instruction;
 
-    // Estrtura do opcode
-    typedef struct {
+    // Estrtura do opcode -> Será usado na tabela de hash (nome do opcode -> estrutura do opcode)
+    typedef struct Opcode_Struct{
         int size;               // Quantidade de operandos
         Opcode_Num opcode_num;  // Instrução em decimal
     } Opcode_Struct;
@@ -45,10 +53,16 @@ namespace table {
     } Error;
 
     // Estrutura de uma pendência <linha de ocorrência, endereço da linha>
-    typedef struct {
+    typedef struct Pendency{
         int line;
         std::vector<std::string> * pendency;
     } Pendency;
+
+    // Um Module corresponde a um vetor de instruções
+    typedef std::vector<Instruction> Module;
+
+    // Um Module_Set corresponde a um conjunto de módulos
+    typedef std::vector<Module> Module_Set;
 } // namespace table
 
 #endif //TRAB_SB_1_TYPES_HPP

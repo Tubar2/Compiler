@@ -32,8 +32,9 @@ void pushInstruction(std::vector<table::Instruction> & instructions, const table
     instructions.push_back(instruction);
 }
 
+// Remove espaço em branco para evitar erros como
+// ["  Label:" ou "   Label:   " ou "  Label  : "] -> "Label:  "
 void correctLabel(std::string & s){
-
     const std::string WHITESPACE = " \n\r\t\f\v";
     size_t start = s.find_first_not_of(WHITESPACE);
     s = (start == std::string::npos) ? "" : s.substr(start);
@@ -48,7 +49,7 @@ void correctLabel(std::string & s){
 
 
 // Lê um arquivo de testo e popula um vetor com cada linha de instrução
-std::vector<table::Instruction> readFile(const std::string& filename){
+table::Module readFile(const std::string& filename){
     // Abrindo arquivo para leitura e checando se foi aberto corretamente
     std::ifstream file {filename};
     if (!file) {
@@ -60,11 +61,11 @@ std::vector<table::Instruction> readFile(const std::string& filename){
     // Variáveis auxiliares
     std::string line, word;     // 'Line' será a linha do arquivo e 'word' cada palavra separada por espaçp
     int lineCounter{1};         // Contador de linha do arquivo texto
-    std::vector<table::Instruction> data{}, text{}; // Vetores com cada seção de dados e texto, respectivamente
+    table::Module data{}, text{}; // Semi-Módulos contendo ou a seção de dados (.data) ou de texto (.text)
 
     // Lendo arquvo linha por linha e salvando linha em 'line'
     while (std::getline(file, line)){
-        correctLabel(line);              // corrige o label para casos como em "  label  :"
+        correctLabel(line);              // Corrige labels que possuam espaço em branco
         std::istringstream iss{line};       // string-stream para leitura
         table::Instruction instruction {};  // Instrução para ser populada
         // Espaços em branco são ignorados ao irem para a stream

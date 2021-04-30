@@ -1,21 +1,27 @@
+#include <array>
 #include "aux/montador/montador_aux.hpp"
 
 
 int main(int argc, char *argv[]) {
-    if (argc != 2) {
+    if (argc < 2 || argc > 4) {
         std::cerr << "Número de argumentos inválidos" << std::endl;
         exit(1);
     }
-    // Removendo a extensão do nome do arquivo "<filename>.asm"
-    std::string filename;
-    for (int i = 0; i < strlen(argv[1]); ++i) {
-        if (argv[1][i] == '.') break;
-        filename += (argv[1][i]);
+    // Lê cada arquivo fornecido e remove o final ".asm"
+    std::array<std::string, 3> filenames;
+    for(int j = 1; j<argc; j++) {
+        for (int i = 0; i < strlen(argv[j]); ++i) {
+            if (argv[j][i] == '.') break;
+            filenames[j-1] += (argv[j][i]);
+        }
     }
-    // Criar um vetor com linhas de Instruções
-    std::vector<table::Instruction> instructions {};
-    // Popula o vetor de instruções
-    instructions = readFile(filename + ".asm");
+    // Criar um vetor que armazenará todos os módulos
+    table::Module_Set modules {};
+    // Para cada arquivo de input, criaremos seu módulo e adicionaremos ao vetor de módulos
+    for (int i=0; i<argc; i++){
+        modules.push_back(readFile(filenames[i] + ".asm"));
+    }
+
 
     // Aplica o algoritmo de segunda passagem modificado
     auto obj_file = secondPass(instructions);
