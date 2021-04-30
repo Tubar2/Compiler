@@ -122,12 +122,24 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/first_pass/first_pass_aux.cpp">
+			<Option target="Trab_SB_1"/>
+		</Unit>
+		<Unit filename="/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/first_pass/first_pass_aux.hpp">
+			<Option target="Trab_SB_1"/>
+		</Unit>
 		<Unit filename="/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/montador_aux.cpp">
 			<Option target="simulador"/>
 			<Option target="Trab_SB_1"/>
 		</Unit>
 		<Unit filename="/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/montador_aux.hpp">
 			<Option target="simulador"/>
+			<Option target="Trab_SB_1"/>
+		</Unit>
+		<Unit filename="/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/second_pass/second_pass_aux.cpp">
+			<Option target="Trab_SB_1"/>
+		</Unit>
+		<Unit filename="/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/second_pass/second_pass_aux.hpp">
 			<Option target="Trab_SB_1"/>
 		</Unit>
 		<Unit filename="/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/simulador/simulador_aux.cpp">
@@ -142,6 +154,18 @@
 		</Unit>
 		<Unit filename="/Users/ricardosantos/Documents/UnB/Trab_SB_1/database/types.hpp">
 			<Option target="simulador"/>
+			<Option target="Trab_SB_1"/>
+		</Unit>
+		<Unit filename="/Users/ricardosantos/Documents/UnB/Trab_SB_1/error/Lexic/lexic.cpp">
+			<Option target="Trab_SB_1"/>
+		</Unit>
+		<Unit filename="/Users/ricardosantos/Documents/UnB/Trab_SB_1/error/Semantic/semantic.cpp">
+			<Option target="Trab_SB_1"/>
+		</Unit>
+		<Unit filename="/Users/ricardosantos/Documents/UnB/Trab_SB_1/error/Sintatic/sintatic.cpp">
+			<Option target="Trab_SB_1"/>
+		</Unit>
+		<Unit filename="/Users/ricardosantos/Documents/UnB/Trab_SB_1/error/error_handling.hpp">
 			<Option target="Trab_SB_1"/>
 		</Unit>
 		<Unit filename="/Users/ricardosantos/Documents/UnB/Trab_SB_1/montador.cpp">

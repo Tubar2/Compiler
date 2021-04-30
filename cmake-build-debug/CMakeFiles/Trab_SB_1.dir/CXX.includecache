@@ -6,21 +6,37 @@
 
 #IncludeRegexTransform: 
 
-/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/montador_aux.cpp
-montador_aux.hpp
-/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/montador_aux.hpp
-../../database/tables.hpp
-/Users/ricardosantos/Documents/UnB/Trab_SB_1/database/tables.hpp
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/first_pass/first_pass_aux.cpp
+first_pass_aux.hpp
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/first_pass/first_pass_aux.hpp
 
-/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/montador_aux.hpp
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/first_pass/first_pass_aux.hpp
+sstream
+-
 fstream
 -
 iostream
 -
-sstream
--
-../../database/types.hpp
-/Users/ricardosantos/Documents/UnB/Trab_SB_1/database/types.hpp
+../../../error/error_handling.hpp
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/error/error_handling.hpp
+
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/montador_aux.cpp
+montador_aux.hpp
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/montador_aux.hpp
+
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/montador_aux.hpp
+first_pass/first_pass_aux.hpp
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/first_pass/first_pass_aux.hpp
+second_pass/second_pass_aux.hpp
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/second_pass/second_pass_aux.hpp
+
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/second_pass/second_pass_aux.cpp
+second_pass_aux.hpp
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/second_pass/second_pass_aux.hpp
+
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/second_pass/second_pass_aux.hpp
+../../../error/error_handling.hpp
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/error/error_handling.hpp
 
 /Users/ricardosantos/Documents/UnB/Trab_SB_1/database/tables.hpp
 types.hpp
@@ -33,6 +49,26 @@ map
 -
 string
 -
+array
+-
+
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/error/Lexic/lexic.cpp
+../error_handling.hpp
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/error/error_handling.hpp
+
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/error/Semantic/semantic.cpp
+../error_handling.hpp
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/error/error_handling.hpp
+
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/error/Sintatic/sintatic.cpp
+../error_handling.hpp
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/error/error_handling.hpp
+
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/error/error_handling.hpp
+../database/types.hpp
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/database/types.hpp
+../database/tables.hpp
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/database/tables.hpp
 
 /Users/ricardosantos/Documents/UnB/Trab_SB_1/montador.cpp
 aux/montador/montador_aux.hpp

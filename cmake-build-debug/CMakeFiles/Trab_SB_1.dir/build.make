@@ -103,19 +103,94 @@ CMakeFiles/Trab_SB_1.dir/aux/montador/montador_aux.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Trab_SB_1.dir/aux/montador/montador_aux.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/montador_aux.cpp -o CMakeFiles/Trab_SB_1.dir/aux/montador/montador_aux.cpp.s
 
+CMakeFiles/Trab_SB_1.dir/aux/montador/first_pass/first_pass_aux.cpp.o: CMakeFiles/Trab_SB_1.dir/flags.make
+CMakeFiles/Trab_SB_1.dir/aux/montador/first_pass/first_pass_aux.cpp.o: ../aux/montador/first_pass/first_pass_aux.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Trab_SB_1.dir/aux/montador/first_pass/first_pass_aux.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Trab_SB_1.dir/aux/montador/first_pass/first_pass_aux.cpp.o -c /Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/first_pass/first_pass_aux.cpp
+
+CMakeFiles/Trab_SB_1.dir/aux/montador/first_pass/first_pass_aux.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Trab_SB_1.dir/aux/montador/first_pass/first_pass_aux.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/first_pass/first_pass_aux.cpp > CMakeFiles/Trab_SB_1.dir/aux/montador/first_pass/first_pass_aux.cpp.i
+
+CMakeFiles/Trab_SB_1.dir/aux/montador/first_pass/first_pass_aux.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Trab_SB_1.dir/aux/montador/first_pass/first_pass_aux.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/first_pass/first_pass_aux.cpp -o CMakeFiles/Trab_SB_1.dir/aux/montador/first_pass/first_pass_aux.cpp.s
+
+CMakeFiles/Trab_SB_1.dir/aux/montador/second_pass/second_pass_aux.cpp.o: CMakeFiles/Trab_SB_1.dir/flags.make
+CMakeFiles/Trab_SB_1.dir/aux/montador/second_pass/second_pass_aux.cpp.o: ../aux/montador/second_pass/second_pass_aux.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Trab_SB_1.dir/aux/montador/second_pass/second_pass_aux.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Trab_SB_1.dir/aux/montador/second_pass/second_pass_aux.cpp.o -c /Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/second_pass/second_pass_aux.cpp
+
+CMakeFiles/Trab_SB_1.dir/aux/montador/second_pass/second_pass_aux.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Trab_SB_1.dir/aux/montador/second_pass/second_pass_aux.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/second_pass/second_pass_aux.cpp > CMakeFiles/Trab_SB_1.dir/aux/montador/second_pass/second_pass_aux.cpp.i
+
+CMakeFiles/Trab_SB_1.dir/aux/montador/second_pass/second_pass_aux.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Trab_SB_1.dir/aux/montador/second_pass/second_pass_aux.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/second_pass/second_pass_aux.cpp -o CMakeFiles/Trab_SB_1.dir/aux/montador/second_pass/second_pass_aux.cpp.s
+
+CMakeFiles/Trab_SB_1.dir/error/Sintatic/sintatic.cpp.o: CMakeFiles/Trab_SB_1.dir/flags.make
+CMakeFiles/Trab_SB_1.dir/error/Sintatic/sintatic.cpp.o: ../error/Sintatic/sintatic.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Trab_SB_1.dir/error/Sintatic/sintatic.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Trab_SB_1.dir/error/Sintatic/sintatic.cpp.o -c /Users/ricardosantos/Documents/UnB/Trab_SB_1/error/Sintatic/sintatic.cpp
+
+CMakeFiles/Trab_SB_1.dir/error/Sintatic/sintatic.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Trab_SB_1.dir/error/Sintatic/sintatic.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ricardosantos/Documents/UnB/Trab_SB_1/error/Sintatic/sintatic.cpp > CMakeFiles/Trab_SB_1.dir/error/Sintatic/sintatic.cpp.i
+
+CMakeFiles/Trab_SB_1.dir/error/Sintatic/sintatic.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Trab_SB_1.dir/error/Sintatic/sintatic.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ricardosantos/Documents/UnB/Trab_SB_1/error/Sintatic/sintatic.cpp -o CMakeFiles/Trab_SB_1.dir/error/Sintatic/sintatic.cpp.s
+
+CMakeFiles/Trab_SB_1.dir/error/Lexic/lexic.cpp.o: CMakeFiles/Trab_SB_1.dir/flags.make
+CMakeFiles/Trab_SB_1.dir/error/Lexic/lexic.cpp.o: ../error/Lexic/lexic.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Trab_SB_1.dir/error/Lexic/lexic.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Trab_SB_1.dir/error/Lexic/lexic.cpp.o -c /Users/ricardosantos/Documents/UnB/Trab_SB_1/error/Lexic/lexic.cpp
+
+CMakeFiles/Trab_SB_1.dir/error/Lexic/lexic.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Trab_SB_1.dir/error/Lexic/lexic.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ricardosantos/Documents/UnB/Trab_SB_1/error/Lexic/lexic.cpp > CMakeFiles/Trab_SB_1.dir/error/Lexic/lexic.cpp.i
+
+CMakeFiles/Trab_SB_1.dir/error/Lexic/lexic.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Trab_SB_1.dir/error/Lexic/lexic.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ricardosantos/Documents/UnB/Trab_SB_1/error/Lexic/lexic.cpp -o CMakeFiles/Trab_SB_1.dir/error/Lexic/lexic.cpp.s
+
+CMakeFiles/Trab_SB_1.dir/error/Semantic/semantic.cpp.o: CMakeFiles/Trab_SB_1.dir/flags.make
+CMakeFiles/Trab_SB_1.dir/error/Semantic/semantic.cpp.o: ../error/Semantic/semantic.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Trab_SB_1.dir/error/Semantic/semantic.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Trab_SB_1.dir/error/Semantic/semantic.cpp.o -c /Users/ricardosantos/Documents/UnB/Trab_SB_1/error/Semantic/semantic.cpp
+
+CMakeFiles/Trab_SB_1.dir/error/Semantic/semantic.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Trab_SB_1.dir/error/Semantic/semantic.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ricardosantos/Documents/UnB/Trab_SB_1/error/Semantic/semantic.cpp > CMakeFiles/Trab_SB_1.dir/error/Semantic/semantic.cpp.i
+
+CMakeFiles/Trab_SB_1.dir/error/Semantic/semantic.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Trab_SB_1.dir/error/Semantic/semantic.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ricardosantos/Documents/UnB/Trab_SB_1/error/Semantic/semantic.cpp -o CMakeFiles/Trab_SB_1.dir/error/Semantic/semantic.cpp.s
+
 # Object files for target Trab_SB_1
 Trab_SB_1_OBJECTS = \
 "CMakeFiles/Trab_SB_1.dir/montador.cpp.o" \
-"CMakeFiles/Trab_SB_1.dir/aux/montador/montador_aux.cpp.o"
+"CMakeFiles/Trab_SB_1.dir/aux/montador/montador_aux.cpp.o" \
+"CMakeFiles/Trab_SB_1.dir/aux/montador/first_pass/first_pass_aux.cpp.o" \
+"CMakeFiles/Trab_SB_1.dir/aux/montador/second_pass/second_pass_aux.cpp.o" \
+"CMakeFiles/Trab_SB_1.dir/error/Sintatic/sintatic.cpp.o" \
+"CMakeFiles/Trab_SB_1.dir/error/Lexic/lexic.cpp.o" \
+"CMakeFiles/Trab_SB_1.dir/error/Semantic/semantic.cpp.o"
 
 # External object files for target Trab_SB_1
 Trab_SB_1_EXTERNAL_OBJECTS =
 
 Trab_SB_1: CMakeFiles/Trab_SB_1.dir/montador.cpp.o
 Trab_SB_1: CMakeFiles/Trab_SB_1.dir/aux/montador/montador_aux.cpp.o
+Trab_SB_1: CMakeFiles/Trab_SB_1.dir/aux/montador/first_pass/first_pass_aux.cpp.o
+Trab_SB_1: CMakeFiles/Trab_SB_1.dir/aux/montador/second_pass/second_pass_aux.cpp.o
+Trab_SB_1: CMakeFiles/Trab_SB_1.dir/error/Sintatic/sintatic.cpp.o
+Trab_SB_1: CMakeFiles/Trab_SB_1.dir/error/Lexic/lexic.cpp.o
+Trab_SB_1: CMakeFiles/Trab_SB_1.dir/error/Semantic/semantic.cpp.o
 Trab_SB_1: CMakeFiles/Trab_SB_1.dir/build.make
 Trab_SB_1: CMakeFiles/Trab_SB_1.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable Trab_SB_1"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable Trab_SB_1"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Trab_SB_1.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -1,6 +1,27 @@
 # Aluno
 Ricardo Santos - 18/0027263
 
+# Formato da .asm
+O programa espera que o código assembly esteja no seginte formato
+primeiro: headers \
+depois: .sections, onde: \
+Headers:
+```
+mod: BEGIN
+bar: extern
+public foo
+```
+.sections (qualquer ordem):
+```
+section .data
+labl_1: space
+labl_2: const 5
+
+section .text
+    add labl_1
+    end
+```
+
 # Compilando
 Basta rodar `make` no terminal e ambos os executáveis (montador e simulador)
 serão gerados

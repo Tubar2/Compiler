@@ -1,5 +1,10 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Trab_SB_1.dir/aux/montador/first_pass/first_pass_aux.cpp.o"
   "CMakeFiles/Trab_SB_1.dir/aux/montador/montador_aux.cpp.o"
+  "CMakeFiles/Trab_SB_1.dir/aux/montador/second_pass/second_pass_aux.cpp.o"
+  "CMakeFiles/Trab_SB_1.dir/error/Lexic/lexic.cpp.o"
+  "CMakeFiles/Trab_SB_1.dir/error/Semantic/semantic.cpp.o"
+  "CMakeFiles/Trab_SB_1.dir/error/Sintatic/sintatic.cpp.o"
   "CMakeFiles/Trab_SB_1.dir/montador.cpp.o"
   "Trab_SB_1"
   "Trab_SB_1.pdb"

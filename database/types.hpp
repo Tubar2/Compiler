@@ -8,6 +8,7 @@
 #include <vector>
 #include <map>
 #include <string>
+#include <array>
 
 namespace table {
     //////////////////////////////////
@@ -15,12 +16,21 @@ namespace table {
     //////////////////////////////////
 
     // Aliases para tipos string
-    typedef std::string Opcode_Name, Opcode_Num, Label, Directive_Name, Comment, Operation, Prog_Name;
+    typedef std::string Opcode_Name, Label, Directive_Name, Comment, Operation, Prog_Name;
     // Aliases para tipos int
-    typedef int Address, Inst_Line;
+    typedef int Address, Inst_Line, Opcode_Num;
 
     // Uma operação pode ter de 0-2 operandos
     typedef std::vector<std::string> Operands;
+
+    // Programa como código objeto
+    // É um vector<int> apenas com os números após 'end xx.' no exemplo abaixo:
+    // end 00. 12  0
+    // end 02. 10  11
+    // end 04. 14
+    // end 05. 5
+    // => [12, 0, 10, 11, ...]
+    typedef std::vector<int> Object_Code;
 
     // Estrutura de uma linha de instrução
     typedef struct Instruction {
@@ -31,6 +41,7 @@ namespace table {
         Inst_Line line;
     } Instruction;
 
+    // Estrutura com número de Operands e tamanho
     typedef struct Directive_Properties {
         int operands;
         int size;
@@ -52,10 +63,10 @@ namespace table {
     } Error;
 
     // Estrutura de uma pendência <linha de ocorrência, endereço da linha>
-    typedef struct Pendency{
-        int line;
-        std::vector<std::string> * pendency;
-    } Pendency;
+//    typedef struct Pendency{
+//        int line;
+//        Instruction_Address pendency;
+//    } Pendency;
 
     typedef struct Header {
         Prog_Name name;
@@ -74,16 +85,43 @@ namespace table {
         Header header;
         Instructions_Set instructions;
 
-        /////////////////////////////////
-        /* TABELAS E LISTAS AUXILIARES */
-        /////////////////////////////////
+        ////////////////////////////////
+        /* TABELAS E LISTAS DO MÓDULO */
+        ////////////////////////////////
 
         // Tabela de Definições
         std::map<Label, Address> definitionsTable {};
+
         // Tabela de Uso
         std::map<Label, Address> usesTable {};
+
         // Tabela de simbolos
+        // map<Label, Value>, onde
+        // Label = String
+        // Value = {Int, bool}
         std::map<Label, Value> symbolsTable{};
+
+        // Lista de erros
+        std::vector<Error> errorsList{};
+
+        // Retorna true caso uma label foi definida como externa na tabela de símbolos
+    public:
+        bool labelIsExtern(Label label){
+            return symbolsTable[label].isExtern;
+        }
+        void pushError(Error err){
+            errorsList.push_back(err);
+        }
+        void defineLabel(Label label, Address addr){
+            definitionsTable.insert({label, addr});
+        }
+        void insertLabelUseCase(Label label, Address addr){
+            usesTable.insert({label, addr});
+        }
+        int getLabelAddr(Label label){
+            return symbolsTable[label].addr;
+        }
+
     } Module;
 
     // Um Module_Set corresponde a um conjunto de módulos

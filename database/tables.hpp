@@ -7,9 +7,9 @@
 #include "types.hpp"
 
 namespace table {
-    /////////////////////////////////
-    /* TABELAS E LISTAS AUXILIARES */
-    /////////////////////////////////
+    /////////////////////
+    /* TABELAS GLOBAIS */
+    /////////////////////
 
     // Flag de inserção no início ou fim da lista de instruções
     static bool text_insertion_flag {false};
@@ -25,21 +25,21 @@ namespace table {
 
     // Tabela de instruções (mapeia nome_da_instrução -> {tamanho, número_da_intrução})
     static std::map<Opcode_Name, Opcode_Struct> inst_set{
-            {"add",    {2, "1"}},
-            {"sub",    {2, "2"}},
-            {"mul",    {2, "3"}},
-            {"div",    {2, "4"}},
-            {"jmp",    {2, "5"}},
-            {"jmpn",   {2, "6"}},
-            {"jmpp",   {2, "7"}},
-            {"jmpz",   {2, "8"}},
-            {"copy",   {3, "9"}},
-            {"load",   {2, "10"}},
-            {"store",  {2, "11"}},
-            {"input",  {2, "12"}},
-            {"output", {2, "13"}},
-            {"stop",   {1, "14"}},
-            {"public", {0, "0"}},
+            {"add",    {2, 1}},
+            {"sub",    {2, 2}},
+            {"mul",    {2, 3}},
+            {"div",    {2, 4}},
+            {"jmp",    {2, 5}},
+            {"jmpn",   {2, 6}},
+            {"jmpp",   {2, 7}},
+            {"jmpz",   {2, 8}},
+            {"copy",   {3, 9}},
+            {"load",   {2, 10}},
+            {"store",  {2, 11}},
+            {"input",  {2, 12}},
+            {"output", {2, 13}},
+            {"stop",   {1, 14}},
+            {"public", {0, 0}},
     };
 
     // Mapeia o opcode (como um int) para o seu tamanho
@@ -59,12 +59,6 @@ namespace table {
             {13, 2},
             {14, 1},
     };
-
-    // Lista de pendencias
-    static std::vector<Pendency> pendenciesList{};
-
-    // Lista de erros
-    static std::vector<Error> errorsList{};
 
 }
 

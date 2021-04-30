@@ -156,6 +156,33 @@ Trab_SB_1/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/build
 .PHONY : Trab_SB_1/fast
 
+aux/montador/first_pass/first_pass_aux.o: aux/montador/first_pass/first_pass_aux.cpp.o
+
+.PHONY : aux/montador/first_pass/first_pass_aux.o
+
+# target to build an object file
+aux/montador/first_pass/first_pass_aux.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/aux/montador/first_pass/first_pass_aux.cpp.o
+.PHONY : aux/montador/first_pass/first_pass_aux.cpp.o
+
+aux/montador/first_pass/first_pass_aux.i: aux/montador/first_pass/first_pass_aux.cpp.i
+
+.PHONY : aux/montador/first_pass/first_pass_aux.i
+
+# target to preprocess a source file
+aux/montador/first_pass/first_pass_aux.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/aux/montador/first_pass/first_pass_aux.cpp.i
+.PHONY : aux/montador/first_pass/first_pass_aux.cpp.i
+
+aux/montador/first_pass/first_pass_aux.s: aux/montador/first_pass/first_pass_aux.cpp.s
+
+.PHONY : aux/montador/first_pass/first_pass_aux.s
+
+# target to generate assembly for a file
+aux/montador/first_pass/first_pass_aux.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/aux/montador/first_pass/first_pass_aux.cpp.s
+.PHONY : aux/montador/first_pass/first_pass_aux.cpp.s
+
 aux/montador/montador_aux.o: aux/montador/montador_aux.cpp.o
 
 .PHONY : aux/montador/montador_aux.o
@@ -186,6 +213,33 @@ aux/montador/montador_aux.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/aux/montador/montador_aux.cpp.s
 .PHONY : aux/montador/montador_aux.cpp.s
 
+aux/montador/second_pass/second_pass_aux.o: aux/montador/second_pass/second_pass_aux.cpp.o
+
+.PHONY : aux/montador/second_pass/second_pass_aux.o
+
+# target to build an object file
+aux/montador/second_pass/second_pass_aux.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/aux/montador/second_pass/second_pass_aux.cpp.o
+.PHONY : aux/montador/second_pass/second_pass_aux.cpp.o
+
+aux/montador/second_pass/second_pass_aux.i: aux/montador/second_pass/second_pass_aux.cpp.i
+
+.PHONY : aux/montador/second_pass/second_pass_aux.i
+
+# target to preprocess a source file
+aux/montador/second_pass/second_pass_aux.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/aux/montador/second_pass/second_pass_aux.cpp.i
+.PHONY : aux/montador/second_pass/second_pass_aux.cpp.i
+
+aux/montador/second_pass/second_pass_aux.s: aux/montador/second_pass/second_pass_aux.cpp.s
+
+.PHONY : aux/montador/second_pass/second_pass_aux.s
+
+# target to generate assembly for a file
+aux/montador/second_pass/second_pass_aux.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/aux/montador/second_pass/second_pass_aux.cpp.s
+.PHONY : aux/montador/second_pass/second_pass_aux.cpp.s
+
 aux/simulador/simulador_aux.o: aux/simulador/simulador_aux.cpp.o
 
 .PHONY : aux/simulador/simulador_aux.o
@@ -212,6 +266,87 @@ aux/simulador/simulador_aux.s: aux/simulador/simulador_aux.cpp.s
 aux/simulador/simulador_aux.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulador.dir/build.make CMakeFiles/simulador.dir/aux/simulador/simulador_aux.cpp.s
 .PHONY : aux/simulador/simulador_aux.cpp.s
+
+error/Lexic/lexic.o: error/Lexic/lexic.cpp.o
+
+.PHONY : error/Lexic/lexic.o
+
+# target to build an object file
+error/Lexic/lexic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/error/Lexic/lexic.cpp.o
+.PHONY : error/Lexic/lexic.cpp.o
+
+error/Lexic/lexic.i: error/Lexic/lexic.cpp.i
+
+.PHONY : error/Lexic/lexic.i
+
+# target to preprocess a source file
+error/Lexic/lexic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/error/Lexic/lexic.cpp.i
+.PHONY : error/Lexic/lexic.cpp.i
+
+error/Lexic/lexic.s: error/Lexic/lexic.cpp.s
+
+.PHONY : error/Lexic/lexic.s
+
+# target to generate assembly for a file
+error/Lexic/lexic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/error/Lexic/lexic.cpp.s
+.PHONY : error/Lexic/lexic.cpp.s
+
+error/Semantic/semantic.o: error/Semantic/semantic.cpp.o
+
+.PHONY : error/Semantic/semantic.o
+
+# target to build an object file
+error/Semantic/semantic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/error/Semantic/semantic.cpp.o
+.PHONY : error/Semantic/semantic.cpp.o
+
+error/Semantic/semantic.i: error/Semantic/semantic.cpp.i
+
+.PHONY : error/Semantic/semantic.i
+
+# target to preprocess a source file
+error/Semantic/semantic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/error/Semantic/semantic.cpp.i
+.PHONY : error/Semantic/semantic.cpp.i
+
+error/Semantic/semantic.s: error/Semantic/semantic.cpp.s
+
+.PHONY : error/Semantic/semantic.s
+
+# target to generate assembly for a file
+error/Semantic/semantic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/error/Semantic/semantic.cpp.s
+.PHONY : error/Semantic/semantic.cpp.s
+
+error/Sintatic/sintatic.o: error/Sintatic/sintatic.cpp.o
+
+.PHONY : error/Sintatic/sintatic.o
+
+# target to build an object file
+error/Sintatic/sintatic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/error/Sintatic/sintatic.cpp.o
+.PHONY : error/Sintatic/sintatic.cpp.o
+
+error/Sintatic/sintatic.i: error/Sintatic/sintatic.cpp.i
+
+.PHONY : error/Sintatic/sintatic.i
+
+# target to preprocess a source file
+error/Sintatic/sintatic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/error/Sintatic/sintatic.cpp.i
+.PHONY : error/Sintatic/sintatic.cpp.i
+
+error/Sintatic/sintatic.s: error/Sintatic/sintatic.cpp.s
+
+.PHONY : error/Sintatic/sintatic.s
+
+# target to generate assembly for a file
+error/Sintatic/sintatic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/error/Sintatic/sintatic.cpp.s
+.PHONY : error/Sintatic/sintatic.cpp.s
 
 montador.o: montador.cpp.o
 
@@ -277,12 +412,27 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... Trab_SB_1"
 	@echo "... simulador"
+	@echo "... aux/montador/first_pass/first_pass_aux.o"
+	@echo "... aux/montador/first_pass/first_pass_aux.i"
+	@echo "... aux/montador/first_pass/first_pass_aux.s"
 	@echo "... aux/montador/montador_aux.o"
 	@echo "... aux/montador/montador_aux.i"
 	@echo "... aux/montador/montador_aux.s"
+	@echo "... aux/montador/second_pass/second_pass_aux.o"
+	@echo "... aux/montador/second_pass/second_pass_aux.i"
+	@echo "... aux/montador/second_pass/second_pass_aux.s"
 	@echo "... aux/simulador/simulador_aux.o"
 	@echo "... aux/simulador/simulador_aux.i"
 	@echo "... aux/simulador/simulador_aux.s"
+	@echo "... error/Lexic/lexic.o"
+	@echo "... error/Lexic/lexic.i"
+	@echo "... error/Lexic/lexic.s"
+	@echo "... error/Semantic/semantic.o"
+	@echo "... error/Semantic/semantic.i"
+	@echo "... error/Semantic/semantic.s"
+	@echo "... error/Sintatic/sintatic.o"
+	@echo "... error/Sintatic/sintatic.i"
+	@echo "... error/Sintatic/sintatic.s"
 	@echo "... montador.o"
 	@echo "... montador.i"
 	@echo "... montador.s"
