@@ -14,7 +14,7 @@
 table::Module readFile(const std::string& filename);
 
 // Aplica o algoritmo de primeira passagem e retorna um vetor instruções pre-.obj
-std::vector<std::vector<std::string> *> secondPass(const std::vector<table::Instruction>& instructions);
+std::vector<std::vector<std::string> *> secondPass(const table::Module & instructions);
 
 // Substituir símbolos e rótulos não criados pelo seu endereço
 void removePendency(const std::vector<std::vector<std::string> *>& obj_file);

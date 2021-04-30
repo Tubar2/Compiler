@@ -5,6 +5,19 @@
 #include "montador_aux.hpp"
 #include "../../database/tables.hpp"
 
+table::Label checkLabel(table::Label & word, int lineCounter);
+table::Operands createOperands(const std::string& operands_string);
+void pushInstruction(std::vector<table::Instruction> & instructions, const table::Instruction& instruction);
+void correctLabel(table::Label & s);
+bool is_decimal(std::string num);
+int execDirective(const table::Operation& directive, const table::Operands& operands, std::vector<std::string> & line, int lineCounter);
+int execInstruction(const table::Operation& operation, const table::Operands& operands, std::vector<std::string> * line, int lineCounter);
+
+
+void fPass_defineLabel(table::Instruction &instruction, table::Module &module, int posCounter);
+
+void fPass_defineOperation(table::Instruction &instruction, table::Module &module, int &counter);
+
 // Checar se o label foi corretamente criado
 table::Label checkLabel(table::Label & word, int lineCounter){
     // Verifica se o primeiro caractér é um digito
@@ -65,15 +78,15 @@ table::Module readFile(const std::string& filename){
 
     // Variáveis auxiliares
     std::string line, word;     // 'Line' será a linha do arquivo e 'word' cada palavra separada por espaçp
-    int lineCounter{1};         // Contador de linha do arquivo texto
-    table::Module data{}, text{}; // Semi-Módulos contendo ou a seção de dados (.data) ou de texto (.text)
+    int lineCounter{1}, posCounter{0};         // Contador de linha do arquivo texto
+    table::Module module{};
+    table::Instructions_Set data{}, text{}; // Semi-Módulos contendo ou a seção de dados (.data) ou de texto (.text)
 
     // Lendo arquvo linha por linha e salvando linha em 'line'
     while (std::getline(file, line)){
         correctLabel(line);              // Corrige labels que possuam espaço em branco
         std::istringstream iss{line};       // string-stream para leitura
         table::Instruction instruction {};  // Instrução para ser populada
-        bool labelInLine = false;           // Variável auxiliar para indicar se houve label na linha
         // Espaços em branco são ignorados ao irem para a stream
         while (iss >> word) {
             // Checa por comentários
@@ -94,6 +107,12 @@ table::Module readFile(const std::string& filename){
         }
         instruction.line = lineCounter++;   // Adiciona à estrutura da instrução, sua linha de ocorrência no arquivo
         // Popula o semi-módulo com cada instrução devidamente estruturada
+        if (!instruction.label.empty()){
+            fPass_defineLabel(instruction, module, posCounter);
+        }
+        if (!instruction.operation.empty()){
+            fPass_defineOperation(instruction, module, posCounter);
+        }
         if (table::text_insertion_flag){
             pushInstruction(text, instruction);
         } else {
@@ -103,8 +122,33 @@ table::Module readFile(const std::string& filename){
     // TODO: Verificar como será feita a seção de dados e texto, pois isso pode quebrar o programa
     // Conjunto de instruções = text + data (data no final)
     text.insert(text.end(), data.begin(), data.end());
+    module.instructions = text;
     file.close(); // Fecha arquivo
-    return text;
+    return module;
+}
+
+void fPass_defineOperation(table::Instruction &instruction, table::Module &module, int &counter) {
+    bool isDirective = table::directive_set.find(instruction.operation) != table::directive_set.end();
+    if (isDirective){
+        counter += table::directive_set[instruction.operation].size;
+    } else{
+        bool isInstruction = table::inst_set.find(instruction.operation) != table::inst_set.end();
+        if (isInstruction){
+            counter = table::inst_set[instruction.operation].size;
+        } else {
+            // TODO: Operação não definida
+        }
+    }
+
+}
+
+void fPass_defineLabel(table::Instruction &instruction, table::Module &module, int posCounter) {
+    bool inMap = module.symbolsTable.find(instruction.label) != module.symbolsTable.end();
+    if (!inMap) {
+        module.symbolsTable.insert({instruction.label, {posCounter, false}});
+    } else {
+        //TODO: Erro, label redefinido
+    }
 }
 
 // Verifica se uma string é um dígito
@@ -173,11 +217,11 @@ int execInstruction(const table::Operation& operation, const table::Operands& op
     return table::inst_set[operation].size;
 }
 
-std::vector<std::vector<std::string> *> secondPass(const std::vector<table::Instruction> & instructions){
+std::vector<std::vector<std::string> *> secondPass(const table::Module & module){
     int posCounter{0};
     std::vector<std::vector<std::string> *> obj_file {};
     // Iterando sobre cada linha de instrução
-    for (const auto& instruction : instructions){
+    for (const auto & instruction : module.instructions){
         // Caso da operação ser uma Linha Vazia, só comentário ou só seção
         if (
             ( !instruction.comment.empty() && instruction.label.empty() && instruction.operation.empty() )  ||
@@ -188,9 +232,10 @@ std::vector<std::vector<std::string> *> secondPass(const std::vector<table::Inst
         // Checando a existência de label na instrução
         if (!instruction.label.empty()){
             // Procurando pela label na tabela de simbolos
-            if (table::symbolsTable.find(instruction.label) == table::symbolsTable.end()){
+            bool inSymbols = module.symbolsTable.find(instruction.label) != module.symbolsTable.end();
+            if (!inSymbols){
                 // Primeira aparição do label
-                table::symbolsTable.insert({instruction.label, posCounter});
+                module.symbolsTable.insert({instruction.label, posCounter});
             } else {
                 // Segunda aparição => Erro de redefinição
                 table::errorsList.push_back({"Símbolo '" + instruction.label + "' redefinido", "Semântico",

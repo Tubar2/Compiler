@@ -15,13 +15,12 @@ namespace table {
     static bool text_insertion_flag {false};
 
     // Tabela de diretivas (mapeia nome_da_diretiva -> memória que ocupa)
-    static std::map<Directive_Name, int> directive_set{
-            {"space", 0},
-            {"const", 1},
-            {"extern", 0},
-//            {"public", 0},
-            {"begin", 0},
-            {"end", 0},
+    static std::map<Directive_Name, Directive_Properties> directive_set{
+            {"space",  {0,1}},
+            {"const",  {1,1}},
+            {"extern", {0,0}},
+            {"begin",  {0,0}},
+            {"end",    {0,0}},
     };
 
     // Tabela de instruções (mapeia nome_da_instrução -> {tamanho, número_da_intrução})
@@ -40,7 +39,7 @@ namespace table {
             {"input",  {2, "12"}},
             {"output", {2, "13"}},
             {"stop",   {1, "14"}},
-//            {"public", {0, "0"}},
+            {"public", {0, "0"}},
     };
 
     // Mapeia o opcode (como um int) para o seu tamanho
@@ -60,15 +59,6 @@ namespace table {
             {13, 2},
             {14, 1},
     };
-
-    // Tabela de simbolos
-    static std::map<Label, Value> symbolsTable{};
-
-    // Tabela de Uso
-    static std::map<Label, Address> usesTable {};
-
-    // Tabela de Definições
-    static std::map<Label, Address> definitionsTable {};
 
     // Lista de pendencias
     static std::vector<Pendency> pendenciesList{};
