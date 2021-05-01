@@ -13,14 +13,15 @@ table::Module firstPass(const std::string& filename){
         std::cerr << "Erro ao abrir arquivo" << std::endl;
         std::exit(1);
     }
+    // Criando o objeto do módulo que armazenará todas as informações a respeito do arquivo assembly
+    table::Module module{};
+    module.filename = filename;
 
     // Variáveis auxiliares
     std::string line, word;     // 'Line' será a linha do arquivo e 'word' cada palavra separada por espaçp
     int lineCounter{1}, posCounter_data{0}, posCounter_text{0};         // Contador de linha do arquivo texto
-    table::Module module{};
     table::Instructions_Set header{}, data{}, text{}; // Semi-Módulos contendo ou a seção de dados (.data) ou de texto (.text)
 
-    module.filename = filename;
     // Lendo arquvo linha por linha e salvando linha em 'line'
     while (std::getline(file, line)){
         correctLabel(line);              // Corrige labels que possuam espaço em branco
@@ -136,6 +137,12 @@ void createObj(const table::Module & module, const std::string& name){
         out_file << "H: " << module.header.name << "\n";
         out_file << "H: " << module.obj_code.size() << "\n";
         out_file << "R: " <<  module.header.bit_map << "\n";
+        for (auto & use_case : module.usesTable){
+            out_file << "U: " << use_case.label << "," << use_case.addr << "\n";
+        }
+        for (auto & definedSymbol : module.definitionsTable){
+            out_file << "D: " << definedSymbol.first << "," << definedSymbol.second << "\n";
+        }
         out_file << "T: ";
         for (auto code : module.obj_code){
             out_file << code << " ";

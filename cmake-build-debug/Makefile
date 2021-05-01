@@ -144,17 +144,57 @@ simulador/fast:
 .PHONY : simulador/fast
 
 #=============================================================================
-# Target rules for targets named Trab_SB_1
+# Target rules for targets named montador
 
 # Build rule for target.
-Trab_SB_1: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Trab_SB_1
-.PHONY : Trab_SB_1
+montador: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 montador
+.PHONY : montador
 
 # fast build rule for target.
-Trab_SB_1/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/build
-.PHONY : Trab_SB_1/fast
+montador/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/build
+.PHONY : montador/fast
+
+#=============================================================================
+# Target rules for targets named ligador
+
+# Build rule for target.
+ligador: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ligador
+.PHONY : ligador
+
+# fast build rule for target.
+ligador/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ligador.dir/build.make CMakeFiles/ligador.dir/build
+.PHONY : ligador/fast
+
+aux/ligador/ligador_aux.o: aux/ligador/ligador_aux.cpp.o
+
+.PHONY : aux/ligador/ligador_aux.o
+
+# target to build an object file
+aux/ligador/ligador_aux.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ligador.dir/build.make CMakeFiles/ligador.dir/aux/ligador/ligador_aux.cpp.o
+.PHONY : aux/ligador/ligador_aux.cpp.o
+
+aux/ligador/ligador_aux.i: aux/ligador/ligador_aux.cpp.i
+
+.PHONY : aux/ligador/ligador_aux.i
+
+# target to preprocess a source file
+aux/ligador/ligador_aux.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ligador.dir/build.make CMakeFiles/ligador.dir/aux/ligador/ligador_aux.cpp.i
+.PHONY : aux/ligador/ligador_aux.cpp.i
+
+aux/ligador/ligador_aux.s: aux/ligador/ligador_aux.cpp.s
+
+.PHONY : aux/ligador/ligador_aux.s
+
+# target to generate assembly for a file
+aux/ligador/ligador_aux.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ligador.dir/build.make CMakeFiles/ligador.dir/aux/ligador/ligador_aux.cpp.s
+.PHONY : aux/ligador/ligador_aux.cpp.s
 
 aux/montador/first_pass/first_pass_aux.o: aux/montador/first_pass/first_pass_aux.cpp.o
 
@@ -162,7 +202,7 @@ aux/montador/first_pass/first_pass_aux.o: aux/montador/first_pass/first_pass_aux
 
 # target to build an object file
 aux/montador/first_pass/first_pass_aux.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/aux/montador/first_pass/first_pass_aux.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/aux/montador/first_pass/first_pass_aux.cpp.o
 .PHONY : aux/montador/first_pass/first_pass_aux.cpp.o
 
 aux/montador/first_pass/first_pass_aux.i: aux/montador/first_pass/first_pass_aux.cpp.i
@@ -171,7 +211,7 @@ aux/montador/first_pass/first_pass_aux.i: aux/montador/first_pass/first_pass_aux
 
 # target to preprocess a source file
 aux/montador/first_pass/first_pass_aux.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/aux/montador/first_pass/first_pass_aux.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/aux/montador/first_pass/first_pass_aux.cpp.i
 .PHONY : aux/montador/first_pass/first_pass_aux.cpp.i
 
 aux/montador/first_pass/first_pass_aux.s: aux/montador/first_pass/first_pass_aux.cpp.s
@@ -180,7 +220,7 @@ aux/montador/first_pass/first_pass_aux.s: aux/montador/first_pass/first_pass_aux
 
 # target to generate assembly for a file
 aux/montador/first_pass/first_pass_aux.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/aux/montador/first_pass/first_pass_aux.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/aux/montador/first_pass/first_pass_aux.cpp.s
 .PHONY : aux/montador/first_pass/first_pass_aux.cpp.s
 
 aux/montador/montador_aux.o: aux/montador/montador_aux.cpp.o
@@ -190,7 +230,7 @@ aux/montador/montador_aux.o: aux/montador/montador_aux.cpp.o
 # target to build an object file
 aux/montador/montador_aux.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulador.dir/build.make CMakeFiles/simulador.dir/aux/montador/montador_aux.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/aux/montador/montador_aux.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/aux/montador/montador_aux.cpp.o
 .PHONY : aux/montador/montador_aux.cpp.o
 
 aux/montador/montador_aux.i: aux/montador/montador_aux.cpp.i
@@ -200,7 +240,7 @@ aux/montador/montador_aux.i: aux/montador/montador_aux.cpp.i
 # target to preprocess a source file
 aux/montador/montador_aux.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulador.dir/build.make CMakeFiles/simulador.dir/aux/montador/montador_aux.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/aux/montador/montador_aux.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/aux/montador/montador_aux.cpp.i
 .PHONY : aux/montador/montador_aux.cpp.i
 
 aux/montador/montador_aux.s: aux/montador/montador_aux.cpp.s
@@ -210,7 +250,7 @@ aux/montador/montador_aux.s: aux/montador/montador_aux.cpp.s
 # target to generate assembly for a file
 aux/montador/montador_aux.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulador.dir/build.make CMakeFiles/simulador.dir/aux/montador/montador_aux.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/aux/montador/montador_aux.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/aux/montador/montador_aux.cpp.s
 .PHONY : aux/montador/montador_aux.cpp.s
 
 aux/montador/second_pass/second_pass_aux.o: aux/montador/second_pass/second_pass_aux.cpp.o
@@ -219,7 +259,7 @@ aux/montador/second_pass/second_pass_aux.o: aux/montador/second_pass/second_pass
 
 # target to build an object file
 aux/montador/second_pass/second_pass_aux.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/aux/montador/second_pass/second_pass_aux.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/aux/montador/second_pass/second_pass_aux.cpp.o
 .PHONY : aux/montador/second_pass/second_pass_aux.cpp.o
 
 aux/montador/second_pass/second_pass_aux.i: aux/montador/second_pass/second_pass_aux.cpp.i
@@ -228,7 +268,7 @@ aux/montador/second_pass/second_pass_aux.i: aux/montador/second_pass/second_pass
 
 # target to preprocess a source file
 aux/montador/second_pass/second_pass_aux.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/aux/montador/second_pass/second_pass_aux.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/aux/montador/second_pass/second_pass_aux.cpp.i
 .PHONY : aux/montador/second_pass/second_pass_aux.cpp.i
 
 aux/montador/second_pass/second_pass_aux.s: aux/montador/second_pass/second_pass_aux.cpp.s
@@ -237,7 +277,7 @@ aux/montador/second_pass/second_pass_aux.s: aux/montador/second_pass/second_pass
 
 # target to generate assembly for a file
 aux/montador/second_pass/second_pass_aux.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/aux/montador/second_pass/second_pass_aux.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/aux/montador/second_pass/second_pass_aux.cpp.s
 .PHONY : aux/montador/second_pass/second_pass_aux.cpp.s
 
 aux/simulador/simulador_aux.o: aux/simulador/simulador_aux.cpp.o
@@ -273,7 +313,7 @@ database/tables.o: database/tables.cpp.o
 
 # target to build an object file
 database/tables.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/database/tables.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/database/tables.cpp.o
 .PHONY : database/tables.cpp.o
 
 database/tables.i: database/tables.cpp.i
@@ -282,7 +322,7 @@ database/tables.i: database/tables.cpp.i
 
 # target to preprocess a source file
 database/tables.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/database/tables.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/database/tables.cpp.i
 .PHONY : database/tables.cpp.i
 
 database/tables.s: database/tables.cpp.s
@@ -291,7 +331,7 @@ database/tables.s: database/tables.cpp.s
 
 # target to generate assembly for a file
 database/tables.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/database/tables.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/database/tables.cpp.s
 .PHONY : database/tables.cpp.s
 
 error/Lexic/lexic.o: error/Lexic/lexic.cpp.o
@@ -300,7 +340,7 @@ error/Lexic/lexic.o: error/Lexic/lexic.cpp.o
 
 # target to build an object file
 error/Lexic/lexic.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/error/Lexic/lexic.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/error/Lexic/lexic.cpp.o
 .PHONY : error/Lexic/lexic.cpp.o
 
 error/Lexic/lexic.i: error/Lexic/lexic.cpp.i
@@ -309,7 +349,7 @@ error/Lexic/lexic.i: error/Lexic/lexic.cpp.i
 
 # target to preprocess a source file
 error/Lexic/lexic.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/error/Lexic/lexic.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/error/Lexic/lexic.cpp.i
 .PHONY : error/Lexic/lexic.cpp.i
 
 error/Lexic/lexic.s: error/Lexic/lexic.cpp.s
@@ -318,7 +358,7 @@ error/Lexic/lexic.s: error/Lexic/lexic.cpp.s
 
 # target to generate assembly for a file
 error/Lexic/lexic.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/error/Lexic/lexic.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/error/Lexic/lexic.cpp.s
 .PHONY : error/Lexic/lexic.cpp.s
 
 error/Semantic/semantic.o: error/Semantic/semantic.cpp.o
@@ -327,7 +367,7 @@ error/Semantic/semantic.o: error/Semantic/semantic.cpp.o
 
 # target to build an object file
 error/Semantic/semantic.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/error/Semantic/semantic.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/error/Semantic/semantic.cpp.o
 .PHONY : error/Semantic/semantic.cpp.o
 
 error/Semantic/semantic.i: error/Semantic/semantic.cpp.i
@@ -336,7 +376,7 @@ error/Semantic/semantic.i: error/Semantic/semantic.cpp.i
 
 # target to preprocess a source file
 error/Semantic/semantic.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/error/Semantic/semantic.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/error/Semantic/semantic.cpp.i
 .PHONY : error/Semantic/semantic.cpp.i
 
 error/Semantic/semantic.s: error/Semantic/semantic.cpp.s
@@ -345,7 +385,7 @@ error/Semantic/semantic.s: error/Semantic/semantic.cpp.s
 
 # target to generate assembly for a file
 error/Semantic/semantic.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/error/Semantic/semantic.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/error/Semantic/semantic.cpp.s
 .PHONY : error/Semantic/semantic.cpp.s
 
 error/Sintatic/sintatic.o: error/Sintatic/sintatic.cpp.o
@@ -354,7 +394,7 @@ error/Sintatic/sintatic.o: error/Sintatic/sintatic.cpp.o
 
 # target to build an object file
 error/Sintatic/sintatic.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/error/Sintatic/sintatic.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/error/Sintatic/sintatic.cpp.o
 .PHONY : error/Sintatic/sintatic.cpp.o
 
 error/Sintatic/sintatic.i: error/Sintatic/sintatic.cpp.i
@@ -363,7 +403,7 @@ error/Sintatic/sintatic.i: error/Sintatic/sintatic.cpp.i
 
 # target to preprocess a source file
 error/Sintatic/sintatic.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/error/Sintatic/sintatic.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/error/Sintatic/sintatic.cpp.i
 .PHONY : error/Sintatic/sintatic.cpp.i
 
 error/Sintatic/sintatic.s: error/Sintatic/sintatic.cpp.s
@@ -372,8 +412,35 @@ error/Sintatic/sintatic.s: error/Sintatic/sintatic.cpp.s
 
 # target to generate assembly for a file
 error/Sintatic/sintatic.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/error/Sintatic/sintatic.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/error/Sintatic/sintatic.cpp.s
 .PHONY : error/Sintatic/sintatic.cpp.s
+
+ligador.o: ligador.cpp.o
+
+.PHONY : ligador.o
+
+# target to build an object file
+ligador.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ligador.dir/build.make CMakeFiles/ligador.dir/ligador.cpp.o
+.PHONY : ligador.cpp.o
+
+ligador.i: ligador.cpp.i
+
+.PHONY : ligador.i
+
+# target to preprocess a source file
+ligador.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ligador.dir/build.make CMakeFiles/ligador.dir/ligador.cpp.i
+.PHONY : ligador.cpp.i
+
+ligador.s: ligador.cpp.s
+
+.PHONY : ligador.s
+
+# target to generate assembly for a file
+ligador.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ligador.dir/build.make CMakeFiles/ligador.dir/ligador.cpp.s
+.PHONY : ligador.cpp.s
 
 montador.o: montador.cpp.o
 
@@ -381,7 +448,7 @@ montador.o: montador.cpp.o
 
 # target to build an object file
 montador.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/montador.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/montador.cpp.o
 .PHONY : montador.cpp.o
 
 montador.i: montador.cpp.i
@@ -390,7 +457,7 @@ montador.i: montador.cpp.i
 
 # target to preprocess a source file
 montador.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/montador.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/montador.cpp.i
 .PHONY : montador.cpp.i
 
 montador.s: montador.cpp.s
@@ -399,7 +466,7 @@ montador.s: montador.cpp.s
 
 # target to generate assembly for a file
 montador.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/montador.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/montador.cpp.s
 .PHONY : montador.cpp.s
 
 simulador.o: simulador.cpp.o
@@ -437,8 +504,12 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... Trab_SB_1"
+	@echo "... ligador"
+	@echo "... montador"
 	@echo "... simulador"
+	@echo "... aux/ligador/ligador_aux.o"
+	@echo "... aux/ligador/ligador_aux.i"
+	@echo "... aux/ligador/ligador_aux.s"
 	@echo "... aux/montador/first_pass/first_pass_aux.o"
 	@echo "... aux/montador/first_pass/first_pass_aux.i"
 	@echo "... aux/montador/first_pass/first_pass_aux.s"
@@ -463,6 +534,9 @@ help:
 	@echo "... error/Sintatic/sintatic.o"
 	@echo "... error/Sintatic/sintatic.i"
 	@echo "... error/Sintatic/sintatic.s"
+	@echo "... ligador.o"
+	@echo "... ligador.i"
+	@echo "... ligador.s"
 	@echo "... montador.o"
 	@echo "... montador.i"
 	@echo "... montador.s"

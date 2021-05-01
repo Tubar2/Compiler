@@ -1,4 +1,5 @@
 /Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
 /Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles/edit_cache.dir
 /Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles/simulador.dir
-/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles/Trab_SB_1.dir
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles/montador.dir
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles/ligador.dir

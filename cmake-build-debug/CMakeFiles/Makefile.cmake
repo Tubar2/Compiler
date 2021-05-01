@@ -53,5 +53,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/simulador.dir/DependInfo.cmake"
-  "CMakeFiles/Trab_SB_1.dir/DependInfo.cmake"
+  "CMakeFiles/montador.dir/DependInfo.cmake"
+  "CMakeFiles/ligador.dir/DependInfo.cmake"
   )

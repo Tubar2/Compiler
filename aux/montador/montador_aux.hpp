@@ -12,6 +12,7 @@
 
 // Lê o arquivo .asm e retorna um Modulo
 // O módulo é um objeto com tabelas
+// Após o algoritmo firstPass as tabelas de símbolos e definições estarão preenchidas
 // Cada instrução é um struct {Cooment, Label, Operation, Operands, Inst_line}
 table::Module firstPass(const std::string& filename);
 

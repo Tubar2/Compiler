@@ -74,7 +74,8 @@ CMAKE_BINARY_DIR = /Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debu
 
 # The main recursive "all" target.
 all: CMakeFiles/simulador.dir/all
-all: CMakeFiles/Trab_SB_1.dir/all
+all: CMakeFiles/montador.dir/all
+all: CMakeFiles/ligador.dir/all
 
 .PHONY : all
 
@@ -85,7 +86,8 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/simulador.dir/clean
-clean: CMakeFiles/Trab_SB_1.dir/clean
+clean: CMakeFiles/montador.dir/clean
+clean: CMakeFiles/ligador.dir/clean
 
 .PHONY : clean
 
@@ -96,7 +98,7 @@ clean: CMakeFiles/Trab_SB_1.dir/clean
 CMakeFiles/simulador.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulador.dir/build.make CMakeFiles/simulador.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulador.dir/build.make CMakeFiles/simulador.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles --progress-num=10,11,12,13 "Built target simulador"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles --progress-num=13,14,15,16 "Built target simulador"
 .PHONY : CMakeFiles/simulador.dir/all
 
 # Build rule for subdir invocation for target.
@@ -117,31 +119,58 @@ CMakeFiles/simulador.dir/clean:
 .PHONY : CMakeFiles/simulador.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/Trab_SB_1.dir
+# Target rules for target CMakeFiles/montador.dir
 
 # All Build rule for target.
-CMakeFiles/Trab_SB_1.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9 "Built target Trab_SB_1"
-.PHONY : CMakeFiles/Trab_SB_1.dir/all
+CMakeFiles/montador.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles --progress-num=4,5,6,7,8,9,10,11,12 "Built target montador"
+.PHONY : CMakeFiles/montador.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/Trab_SB_1.dir/rule: cmake_check_build_system
+CMakeFiles/montador.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles 9
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Trab_SB_1.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/montador.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/Trab_SB_1.dir/rule
+.PHONY : CMakeFiles/montador.dir/rule
 
 # Convenience name for target.
-Trab_SB_1: CMakeFiles/Trab_SB_1.dir/rule
+montador: CMakeFiles/montador.dir/rule
 
-.PHONY : Trab_SB_1
+.PHONY : montador
 
 # clean rule for target.
-CMakeFiles/Trab_SB_1.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/clean
-.PHONY : CMakeFiles/Trab_SB_1.dir/clean
+CMakeFiles/montador.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/clean
+.PHONY : CMakeFiles/montador.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/ligador.dir
+
+# All Build rule for target.
+CMakeFiles/ligador.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ligador.dir/build.make CMakeFiles/ligador.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ligador.dir/build.make CMakeFiles/ligador.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles --progress-num=1,2,3 "Built target ligador"
+.PHONY : CMakeFiles/ligador.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/ligador.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/ligador.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/ligador.dir/rule
+
+# Convenience name for target.
+ligador: CMakeFiles/ligador.dir/rule
+
+.PHONY : ligador
+
+# clean rule for target.
+CMakeFiles/ligador.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ligador.dir/build.make CMakeFiles/ligador.dir/clean
+.PHONY : CMakeFiles/ligador.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

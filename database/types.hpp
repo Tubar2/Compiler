@@ -62,7 +62,7 @@ namespace table {
         bool operator< (const Error &err) const {return line < err.line ;}
     } Error;
 
-
+    // Estrutura do header do módulo
     typedef struct Header {
         Prog_Name name;
         std::string bit_map;
@@ -76,6 +76,7 @@ namespace table {
         bool isExtern;
     } Value;
 
+    // Estrutura auxiliar para a lista de casos de uso
     typedef struct Symbol_Use_Case {
         Label label;
         Address addr;
