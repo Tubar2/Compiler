@@ -18,8 +18,16 @@ int main (int argc, char *argv[]){
         }
     }
 
+    table::Object_Module_Set modules {};
+    for (int i=0; i<argc-1; i++){
+        modules.push_back(createObject(filenames[i] + ".obj"));
+    }
 
+    auto program = link_objects(modules);
 
+    createObjectProgram(program, filenames[0] + ".obj2");
 
     return 0;
 }
+
+

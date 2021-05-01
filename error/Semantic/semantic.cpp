@@ -4,7 +4,7 @@
 
 #include "../error_handling.hpp"
 
-void assert_isNotDirectiveOrOperation(const table::Instruction & instruction, table::Module & module){
+void assert_isNotDirectiveOrOperation(const table::Instruction & instruction, table::Assembly_Module & module){
     module.pushError({
         "Operação '" + instruction.operation + "' não identificada",
         "Semântico",

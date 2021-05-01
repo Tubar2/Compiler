@@ -7,7 +7,7 @@
 // Verifica se uma string é um dígito
 bool is_decimal(const std::string & num);
 
-void assert_isNotDigit(const std::string & token, table::Module & module, int line){
+void assert_isNotDigit(const std::string & token, table::Assembly_Module & module, int line){
     if ( std::isdigit(token[0])){
         module.pushError({
             "Tipo de operando '" + token + "' inválido",
@@ -17,7 +17,7 @@ void assert_isNotDigit(const std::string & token, table::Module & module, int li
     }
 }
 
-void assert_correctNumOperands(const table::Instruction & instruction, table::Module & module){
+void assert_correctNumOperands(const table::Instruction & instruction, table::Assembly_Module & module){
     if (instruction.operands.size() != table::inst_set[instruction.operation].size-1){
         module.errorsList.push_back({
                 "Instrução '" + instruction.operation + "' com número ilegal de operandos. Esperava: " +
@@ -39,7 +39,7 @@ bool is_decimal(const std::string & num){
     return !num.empty() && it == num.end();
 }
 
-bool assert_constReceivesDecimal(const table::Instruction & instruction, table::Module & module){
+bool assert_constReceivesDecimal(const table::Instruction & instruction, table::Assembly_Module & module){
     if (!is_decimal(instruction.operands[0])) {
         module.pushError({
             "Operando inválida na diretiva 'const'. Esperava decimal. Recebeu: '" + instruction.operands[0] + "'",
@@ -51,7 +51,7 @@ bool assert_constReceivesDecimal(const table::Instruction & instruction, table::
     return true;
 }
 
-void assert_operationReceivesNumOperands(const table::Instruction & instruction, table::Module & module){
+void assert_operationReceivesNumOperands(const table::Instruction & instruction, table::Assembly_Module & module){
     int size = table::directive_set[instruction.operation].operands;
     if (instruction.operands.size() != size){
         module.pushError({
@@ -63,7 +63,7 @@ void assert_operationReceivesNumOperands(const table::Instruction & instruction,
     }
 }
 
-void assert_modulesHaveEnd(table::Module_Set & modules){
+void assert_modulesHaveEnd(table::Assembly_Module_Set & modules){
     if (modules.size() > 1){
         for (auto & module : modules){
             if (module.header.name.empty()){

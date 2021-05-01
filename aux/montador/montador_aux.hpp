@@ -14,16 +14,16 @@
 // O módulo é um objeto com tabelas
 // Após o algoritmo firstPass as tabelas de símbolos e definições estarão preenchidas
 // Cada instrução é um struct {Cooment, Label, Operation, Operands, Inst_line}
-table::Module firstPass(const std::string& filename);
+table::Assembly_Module firstPass(const std::string& filename);
 
-void correctDefinitionsTable(table::Module & module);
+void correctDefinitionsTable(table::Assembly_Module & module);
 
 // Aplica o algoritmo de primeira passagem e retorna um vetor instruções pre-.obj
-table::Object_Code secondPass(table::Module & module);
+table::Object_Code secondPass(table::Assembly_Module & module);
 
 // Vê se o arquivo final teve error e os lista
-bool checkForErrors(table::Module & module);
+bool checkForErrors(table::Assembly_Module & module);
 
 // Cria o arquivo .obj corretamente formatado
-void createObj(const table::Module & module, const std::string& name);
+void createObj(const table::Assembly_Module & module, const std::string& name);
 #endif //TRAB_SB_1_MONTADOR_AUX_HPP

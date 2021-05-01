@@ -6,36 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/first_pass/first_pass_aux.hpp
-sstream
--
-fstream
--
-iostream
--
-../../../error/error_handling.hpp
-/Users/ricardosantos/Documents/UnB/Trab_SB_1/error/error_handling.hpp
-
-/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/montador_aux.cpp
-montador_aux.hpp
-/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/montador_aux.hpp
-
-/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/montador_aux.hpp
-first_pass/first_pass_aux.hpp
-/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/first_pass/first_pass_aux.hpp
-second_pass/second_pass_aux.hpp
-/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/second_pass/second_pass_aux.hpp
-
-/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/second_pass/second_pass_aux.hpp
-../../../error/error_handling.hpp
-/Users/ricardosantos/Documents/UnB/Trab_SB_1/error/error_handling.hpp
-
-/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/simulador/simulador_aux.cpp
-simulador_aux.hpp
-/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/simulador/simulador_aux.hpp
-../../database/tables.hpp
-/Users/ricardosantos/Documents/UnB/Trab_SB_1/database/tables.hpp
-
 /Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/simulador/simulador_aux.hpp
 iostream
 -
@@ -45,12 +15,16 @@ string
 -
 fstream
 -
+../../database/tables.hpp
+/Users/ricardosantos/Documents/UnB/Trab_SB_1/database/tables.hpp
 
 /Users/ricardosantos/Documents/UnB/Trab_SB_1/database/tables.hpp
 types.hpp
 /Users/ricardosantos/Documents/UnB/Trab_SB_1/database/types.hpp
 
 /Users/ricardosantos/Documents/UnB/Trab_SB_1/database/types.hpp
+utility
+-
 vector
 -
 map
@@ -60,15 +34,7 @@ string
 array
 -
 
-/Users/ricardosantos/Documents/UnB/Trab_SB_1/error/error_handling.hpp
-../database/types.hpp
-/Users/ricardosantos/Documents/UnB/Trab_SB_1/database/types.hpp
-../database/tables.hpp
-/Users/ricardosantos/Documents/UnB/Trab_SB_1/database/tables.hpp
-
 /Users/ricardosantos/Documents/UnB/Trab_SB_1/simulador.cpp
-fstream
--
 sstream
 -
 aux/simulador/simulador_aux.hpp

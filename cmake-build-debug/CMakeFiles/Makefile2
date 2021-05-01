@@ -98,12 +98,12 @@ clean: CMakeFiles/ligador.dir/clean
 CMakeFiles/simulador.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulador.dir/build.make CMakeFiles/simulador.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulador.dir/build.make CMakeFiles/simulador.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles --progress-num=13,14,15,16 "Built target simulador"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles --progress-num=15,16,17,18,19 "Built target simulador"
 .PHONY : CMakeFiles/simulador.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/simulador.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/simulador.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/simulador.dir/rule
@@ -125,12 +125,12 @@ CMakeFiles/simulador.dir/clean:
 CMakeFiles/montador.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles --progress-num=4,5,6,7,8,9,10,11,12 "Built target montador"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles --progress-num=5,6,7,8,9,10,11,12,13,14 "Built target montador"
 .PHONY : CMakeFiles/montador.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/montador.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles 9
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles 10
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/montador.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/montador.dir/rule
@@ -152,12 +152,12 @@ CMakeFiles/montador.dir/clean:
 CMakeFiles/ligador.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ligador.dir/build.make CMakeFiles/ligador.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ligador.dir/build.make CMakeFiles/ligador.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles --progress-num=1,2,3 "Built target ligador"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4 "Built target ligador"
 .PHONY : CMakeFiles/ligador.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ligador.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/ligador.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/ligador.dir/rule

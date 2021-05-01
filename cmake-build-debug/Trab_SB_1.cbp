@@ -177,11 +177,9 @@
 			<Option target="montador"/>
 		</Unit>
 		<Unit filename="/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/montador_aux.cpp">
-			<Option target="simulador"/>
 			<Option target="montador"/>
 		</Unit>
 		<Unit filename="/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/montador_aux.hpp">
-			<Option target="simulador"/>
 			<Option target="montador"/>
 		</Unit>
 		<Unit filename="/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/montador/second_pass/second_pass_aux.cpp">
@@ -197,11 +195,17 @@
 			<Option target="simulador"/>
 		</Unit>
 		<Unit filename="/Users/ricardosantos/Documents/UnB/Trab_SB_1/database/tables.cpp">
+			<Option target="simulador"/>
 			<Option target="montador"/>
 		</Unit>
 		<Unit filename="/Users/ricardosantos/Documents/UnB/Trab_SB_1/database/tables.hpp">
 			<Option target="simulador"/>
 			<Option target="montador"/>
+		</Unit>
+		<Unit filename="/Users/ricardosantos/Documents/UnB/Trab_SB_1/database/types.cpp">
+			<Option target="simulador"/>
+			<Option target="montador"/>
+			<Option target="ligador"/>
 		</Unit>
 		<Unit filename="/Users/ricardosantos/Documents/UnB/Trab_SB_1/database/types.hpp">
 			<Option target="simulador"/>

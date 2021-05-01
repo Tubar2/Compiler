@@ -9,6 +9,7 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include "../../database/tables.hpp"
 
 static const int infinity = INFINITY;
 

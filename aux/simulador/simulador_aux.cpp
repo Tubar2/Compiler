@@ -3,7 +3,6 @@
 //
 
 #include "simulador_aux.hpp"
-#include "../../database/tables.hpp"
 
 int ACC {0};
 int PC {0};

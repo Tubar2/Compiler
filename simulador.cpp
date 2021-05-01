@@ -2,7 +2,7 @@
 // Created by Ricardo Santos on 10/03/21.
 //
 
-#include <fstream>
+
 #include <sstream>
 #include "aux/simulador/simulador_aux.hpp"
 
@@ -14,11 +14,11 @@ int main(int argc, char *argv[]){
     }
     std::string filename;
     for (int i = 0; i < strlen(argv[1]); ++i) {
-        if (argv[1][i] == '.') break;
+        if (argv[1][i] == '.' && i>3) break;
         filename += (argv[1][i]);
     }
     // Abrindo arquivo objeto para leitura
-    std::ifstream file {filename+".obj"};
+    std::ifstream file {filename+".obj2"};
     if (!file) {
         // Arquivo não encotrado
         std::cerr << "Erro ao abrir arquivo" << std::endl;

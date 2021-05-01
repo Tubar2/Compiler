@@ -229,7 +229,6 @@ aux/montador/montador_aux.o: aux/montador/montador_aux.cpp.o
 
 # target to build an object file
 aux/montador/montador_aux.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulador.dir/build.make CMakeFiles/simulador.dir/aux/montador/montador_aux.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/aux/montador/montador_aux.cpp.o
 .PHONY : aux/montador/montador_aux.cpp.o
 
@@ -239,7 +238,6 @@ aux/montador/montador_aux.i: aux/montador/montador_aux.cpp.i
 
 # target to preprocess a source file
 aux/montador/montador_aux.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulador.dir/build.make CMakeFiles/simulador.dir/aux/montador/montador_aux.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/aux/montador/montador_aux.cpp.i
 .PHONY : aux/montador/montador_aux.cpp.i
 
@@ -249,7 +247,6 @@ aux/montador/montador_aux.s: aux/montador/montador_aux.cpp.s
 
 # target to generate assembly for a file
 aux/montador/montador_aux.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulador.dir/build.make CMakeFiles/simulador.dir/aux/montador/montador_aux.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/aux/montador/montador_aux.cpp.s
 .PHONY : aux/montador/montador_aux.cpp.s
 
@@ -313,6 +310,7 @@ database/tables.o: database/tables.cpp.o
 
 # target to build an object file
 database/tables.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulador.dir/build.make CMakeFiles/simulador.dir/database/tables.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/database/tables.cpp.o
 .PHONY : database/tables.cpp.o
 
@@ -322,6 +320,7 @@ database/tables.i: database/tables.cpp.i
 
 # target to preprocess a source file
 database/tables.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulador.dir/build.make CMakeFiles/simulador.dir/database/tables.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/database/tables.cpp.i
 .PHONY : database/tables.cpp.i
 
@@ -331,8 +330,42 @@ database/tables.s: database/tables.cpp.s
 
 # target to generate assembly for a file
 database/tables.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulador.dir/build.make CMakeFiles/simulador.dir/database/tables.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/database/tables.cpp.s
 .PHONY : database/tables.cpp.s
+
+database/types.o: database/types.cpp.o
+
+.PHONY : database/types.o
+
+# target to build an object file
+database/types.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulador.dir/build.make CMakeFiles/simulador.dir/database/types.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/database/types.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ligador.dir/build.make CMakeFiles/ligador.dir/database/types.cpp.o
+.PHONY : database/types.cpp.o
+
+database/types.i: database/types.cpp.i
+
+.PHONY : database/types.i
+
+# target to preprocess a source file
+database/types.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulador.dir/build.make CMakeFiles/simulador.dir/database/types.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/database/types.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ligador.dir/build.make CMakeFiles/ligador.dir/database/types.cpp.i
+.PHONY : database/types.cpp.i
+
+database/types.s: database/types.cpp.s
+
+.PHONY : database/types.s
+
+# target to generate assembly for a file
+database/types.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulador.dir/build.make CMakeFiles/simulador.dir/database/types.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/montador.dir/build.make CMakeFiles/montador.dir/database/types.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ligador.dir/build.make CMakeFiles/ligador.dir/database/types.cpp.s
+.PHONY : database/types.cpp.s
 
 error/Lexic/lexic.o: error/Lexic/lexic.cpp.o
 
@@ -525,6 +558,9 @@ help:
 	@echo "... database/tables.o"
 	@echo "... database/tables.i"
 	@echo "... database/tables.s"
+	@echo "... database/types.o"
+	@echo "... database/types.i"
+	@echo "... database/types.s"
 	@echo "... error/Lexic/lexic.o"
 	@echo "... error/Lexic/lexic.i"
 	@echo "... error/Lexic/lexic.s"

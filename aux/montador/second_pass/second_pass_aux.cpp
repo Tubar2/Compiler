@@ -5,7 +5,7 @@
 #include "second_pass_aux.hpp"
 
 
-int execDirective(const table::Instruction & instruction, table::Object_Code & obj_file, table::Module & module){
+int execDirective(const table::Instruction & instruction, table::Object_Code & obj_file, table::Assembly_Module & module){
     assert_operationReceivesNumOperands(instruction, module);
     if (instruction.operation == "space"){
         module.header.bit_map += "0";
@@ -25,7 +25,7 @@ int execDirective(const table::Instruction & instruction, table::Object_Code & o
     return 0;
 }
 
-int execInstruction(const table::Instruction & instruction, table::Object_Code & obj_file, table::Module & module){
+int execInstruction(const table::Instruction & instruction, table::Object_Code & obj_file, table::Assembly_Module & module){
     obj_file.push_back(table::inst_set[instruction.operation].opcode_num);
     module.header.bit_map += "0";
     // Introduzindo cada operando no vetor-linha de operação

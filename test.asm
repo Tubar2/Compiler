@@ -12,6 +12,6 @@ section .text
     load val
     add y
     store y
-    jmp mod_b
+    jmpp mod_b
 l1: stop
 end

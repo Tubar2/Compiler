@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
         }
     }
     // Criar um vetor que armazenará todos os módulos
-    table::Module_Set modules {};
+    table::Assembly_Module_Set modules {};
     // Para cada arquivo de input, criaremos seu módulo e adicionaremos ao vetor de módulos
     for (int i=0; i<argc-1; i++){
         table::reset_flags();

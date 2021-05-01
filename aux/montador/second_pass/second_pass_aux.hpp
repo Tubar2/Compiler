@@ -14,10 +14,10 @@
 
 // Ao executar uma diretiva (ja válidada), retorna a quantidade de bytes que ocupa
 // Checa caso o número de operandos foi devidamente fornecido
-int execDirective(const table::Instruction & instruction, table::Object_Code & obj_file, table::Module & module);
+int execDirective(const table::Instruction & instruction, table::Object_Code & obj_file, table::Assembly_Module & module);
 
 //
-int execInstruction(const table::Instruction & instruction, table::Object_Code & obj_file, table::Module & module);
+int execInstruction(const table::Instruction & instruction, table::Object_Code & obj_file, table::Assembly_Module & module);
 
 /*------------------------------------
 | Funções para formatar as instruções |

@@ -5,7 +5,7 @@
 #include "first_pass_aux.hpp"
 
 
-table::Label checkLabel(table::Label & word, table::Module & module, int lineCounter){
+table::Label checkLabel(table::Label & word, table::Assembly_Module & module, int lineCounter){
     assert_firstLetterNotNumber(word, module, lineCounter);
     word.pop_back(); // Remove ':'
     assert_wordLengthLessThan50(word, module, lineCounter);
@@ -42,7 +42,7 @@ void correctLabel(table::Label & s){
     }
 }
 
-void fPass_defineLabel(table::Instruction &instruction, table::Module &module) {
+void fPass_defineLabel(table::Instruction &instruction, table::Assembly_Module &module) {
     bool inMap = module.symbolsTable.find(instruction.label) != module.symbolsTable.end();
     if (!inMap) {
         // Caso begin
@@ -63,7 +63,7 @@ void fPass_defineLabel(table::Instruction &instruction, table::Module &module) {
     }
 }
 
-void fPass_defineOperation(table::Instruction &instruction, table::Module &module) {
+void fPass_defineOperation(table::Instruction &instruction, table::Assembly_Module &module) {
     bool isInstruction = table::inst_set.find(instruction.operation) != table::inst_set.end();
     if (isInstruction){
         if (instruction.operation == "public"){
@@ -82,7 +82,7 @@ void fPass_defineOperation(table::Instruction &instruction, table::Module &modul
     }
 }
 
-void defineBegindExternPublic(table::Instruction &instruction, table::Module &module){
+void defineBegindExternPublic(table::Instruction &instruction, table::Assembly_Module &module){
     // Caso begin ou extern
     if (!instruction.label.empty()){
         fPass_defineLabel(instruction, module);
@@ -93,7 +93,7 @@ void defineBegindExternPublic(table::Instruction &instruction, table::Module &mo
     }
 }
 
-void defineVariables(table::Instruction &instruction, table::Module &module, int & posCounter){
+void defineVariables(table::Instruction &instruction, table::Assembly_Module &module, int & posCounter){
     if (!instruction.label.empty()){
         if (!instruction.operation.empty()){
             auto directive = table::directive_set.find(instruction.operation);
@@ -112,7 +112,7 @@ void defineVariables(table::Instruction &instruction, table::Module &module, int
     }
 }
 
-void defineLabels(table::Instruction &instruction, table::Module &module, int & posCounter){
+void defineLabels(table::Instruction &instruction, table::Assembly_Module &module, int & posCounter){
     if (!instruction.label.empty()){
         bool isInSymbols = module.symbolsTable.find(instruction.label) != module.symbolsTable.end();
         if (!isInSymbols){
@@ -130,7 +130,7 @@ void defineLabels(table::Instruction &instruction, table::Module &module, int & 
     }
 }
 
-void correctDataAddr(table::Instructions_Set & data, table::Module & module, int posCounter_text){
+void correctDataAddr(table::Instructions_Set & data, table::Assembly_Module & module, int posCounter_text){
     for (auto & instruction : data){
         if (!instruction.label.empty()){
             module.symbolsTable[instruction.label].addr += posCounter_text;

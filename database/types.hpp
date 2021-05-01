@@ -5,6 +5,7 @@
 #ifndef TRAB_SB_1_TYPES_HPP
 #define TRAB_SB_1_TYPES_HPP
 
+#include <utility>
 #include <vector>
 #include <map>
 #include <string>
@@ -82,8 +83,11 @@ namespace table {
         Address addr;
     } Symbol_Use_Case;
 
-    // Um Module corresponde a um header + vetor de instruções
-    typedef struct Module {
+    // Módulo assemlby corresponde às infromações de header +
+    // vetor de instruções +
+    // tabelas +
+    // código objeto gerado
+    typedef struct Assembly_Module {
         Header header;
         table::Object_Code obj_code;
         bool has_end = false;
@@ -112,29 +116,54 @@ namespace table {
 
         // Retorna true caso uma label foi definida como externa na tabela de símbolos
     public:
-        bool labelIsExtern(Label label){
+        bool labelIsExtern(const Label& label){
             return symbolsTable[label].isExtern;
         }
-        void pushError(Error err){
+        void pushError(const Error& err){
             errorsList.push_back(err);
         }
-        void defineLabel(Label label, Address addr){
+        void defineLabel(const Label& label, Address addr){
             definitionsTable.insert({label, addr});
         }
         void insertLabelUseCase(Label label, Address addr){
-            usesTable.push_back({label, addr});
+            usesTable.push_back({std::move(label), addr});
         }
-        void insertLabelSymbols(Label label, Address addr, bool isExtern){
+        void insertLabelSymbols(const Label& label, Address addr, bool isExtern){
             symbolsTable.insert({label, {addr, isExtern}});
         }
-        int getLabelAddr(Label label){
+        int getLabelAddr(const Label& label){
             return symbolsTable[label].addr;
         }
 
-    } Module;
+    } Assembly_Module;
+
+
+    //
+    typedef struct Object_Module {
+        int module_number;
+        std::string bit_map;
+        table::Object_Code obj_code;
+
+        static int cur_number;
+        static std::vector<int> correction_factors;
+        static std::map<Label, Address> globalDefinitionsTable;
+
+        std::map<Label, Address> definitionsTable {};
+
+        std::vector<Symbol_Use_Case> usesTable {};
+
+        void defineLabel(const Label& label, Address addr){
+            definitionsTable.insert({label, addr});
+            globalDefinitionsTable.insert({label, addr + correction_factors[module_number-1]});
+        }
+        void insertLabelUseCase(Label label, Address addr){
+            usesTable.push_back({std::move(label), addr});
+        }
+    }Object_Module;
 
     // Um Module_Set corresponde a um conjunto de módulos
-    typedef std::vector<Module> Module_Set;
+    typedef std::vector<Assembly_Module> Assembly_Module_Set;
+    typedef std::vector<Object_Module> Object_Module_Set;
 } // namespace table
 
 #endif //TRAB_SB_1_TYPES_HPP

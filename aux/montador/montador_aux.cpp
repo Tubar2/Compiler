@@ -5,7 +5,7 @@
 #include "montador_aux.hpp"
 
 
-table::Module firstPass(const std::string& filename){
+table::Assembly_Module firstPass(const std::string& filename){
     // Abrindo arquivo para leitura e checando se foi aberto corretamente
     std::ifstream file {filename};
     if (!file) {
@@ -14,7 +14,7 @@ table::Module firstPass(const std::string& filename){
         std::exit(1);
     }
     // Criando o objeto do módulo que armazenará todas as informações a respeito do arquivo assembly
-    table::Module module{};
+    table::Assembly_Module module{};
     module.filename = filename;
 
     // Variáveis auxiliares
@@ -72,13 +72,13 @@ table::Module firstPass(const std::string& filename){
     return module;
 }
 
-void correctDefinitionsTable(table::Module & module){
+void correctDefinitionsTable(table::Assembly_Module & module){
     for (auto & val : module.definitionsTable){
         val.second = module.symbolsTable[val.first].addr;
     }
 }
 
-table::Object_Code secondPass(table::Module & module){
+table::Object_Code secondPass(table::Assembly_Module & module){
     int posCounter{0};
     table::Object_Code obj_file {};
     // Iterando sobre cada linha de instrução
@@ -114,7 +114,7 @@ table::Object_Code secondPass(table::Module & module){
 }
 
 
-bool checkForErrors(table::Module & module){
+bool checkForErrors(table::Assembly_Module & module){
     if (!module.errorsList.empty()){
         std::sort(module.errorsList.begin(), module.errorsList.end());
         for (const auto & error : module.errorsList){
@@ -128,7 +128,7 @@ bool checkForErrors(table::Module & module){
     return false;
 }
 
-void createObj(const table::Module & module, const std::string& name){
+void createObj(const table::Assembly_Module & module, const std::string& name){
     std::ofstream out_file {name, std::ios::trunc};
     if (!out_file){
         std::cerr << "Error creating exit file " << name << std::endl;
