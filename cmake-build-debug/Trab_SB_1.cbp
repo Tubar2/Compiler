@@ -148,6 +148,9 @@
 		<Unit filename="/Users/ricardosantos/Documents/UnB/Trab_SB_1/aux/simulador/simulador_aux.hpp">
 			<Option target="simulador"/>
 		</Unit>
+		<Unit filename="/Users/ricardosantos/Documents/UnB/Trab_SB_1/database/tables.cpp">
+			<Option target="Trab_SB_1"/>
+		</Unit>
 		<Unit filename="/Users/ricardosantos/Documents/UnB/Trab_SB_1/database/tables.hpp">
 			<Option target="simulador"/>
 			<Option target="Trab_SB_1"/>

@@ -15,15 +15,14 @@
 // Cada instrução é um struct {Cooment, Label, Operation, Operands, Inst_line}
 table::Module firstPass(const std::string& filename);
 
+void correctDefinitionsTable(table::Module & module);
+
 // Aplica o algoritmo de primeira passagem e retorna um vetor instruções pre-.obj
 table::Object_Code secondPass(table::Module & module);
 
-// Substituir símbolos e rótulos não criados pelo seu endereço
-void removePendency(const std::vector<std::vector<std::string> *>& obj_file);
-
 // Vê se o arquivo final teve error e os lista
-bool checkForErrors();
+bool checkForErrors(table::Module & module);
 
 // Cria o arquivo .obj corretamente formatado
-void createObj(const std::vector<std::vector<std::string> *>& obj_file, const std::string& name);
+void createObj(const table::Module & module, const std::string& name);
 #endif //TRAB_SB_1_MONTADOR_AUX_HPP

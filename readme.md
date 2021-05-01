@@ -10,11 +10,12 @@ Headers:
 mod: BEGIN
 bar: extern
 public foo
+public mod
 ```
 .sections (qualquer ordem):
 ```
 section .data
-labl_1: space
+foo: space
 labl_2: const 5
 
 section .text

@@ -62,14 +62,10 @@ namespace table {
         bool operator< (const Error &err) const {return line < err.line ;}
     } Error;
 
-    // Estrutura de uma pendência <linha de ocorrência, endereço da linha>
-//    typedef struct Pendency{
-//        int line;
-//        Instruction_Address pendency;
-//    } Pendency;
 
     typedef struct Header {
         Prog_Name name;
+        std::string bit_map;
     } Header;
 
     typedef std::vector<Instruction> Instructions_Set;
@@ -80,11 +76,20 @@ namespace table {
         bool isExtern;
     } Value;
 
+    typedef struct Symbol_Use_Case {
+        Label label;
+        Address addr;
+    } Symbol_Use_Case;
+
     // Um Module corresponde a um header + vetor de instruções
     typedef struct Module {
         Header header;
-        Instructions_Set instructions;
+        table::Object_Code obj_code;
+        bool has_end = false;
 
+        std::string filename;
+
+        Instructions_Set instructions;
         ////////////////////////////////
         /* TABELAS E LISTAS DO MÓDULO */
         ////////////////////////////////
@@ -93,7 +98,7 @@ namespace table {
         std::map<Label, Address> definitionsTable {};
 
         // Tabela de Uso
-        std::map<Label, Address> usesTable {};
+        std::vector<Symbol_Use_Case> usesTable {};
 
         // Tabela de simbolos
         // map<Label, Value>, onde
@@ -116,7 +121,10 @@ namespace table {
             definitionsTable.insert({label, addr});
         }
         void insertLabelUseCase(Label label, Address addr){
-            usesTable.insert({label, addr});
+            usesTable.push_back({label, addr});
+        }
+        void insertLabelSymbols(Label label, Address addr, bool isExtern){
+            symbolsTable.insert({label, {addr, isExtern}});
         }
         int getLabelAddr(Label label){
             return symbolsTable[label].addr;

@@ -267,6 +267,33 @@ aux/simulador/simulador_aux.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulador.dir/build.make CMakeFiles/simulador.dir/aux/simulador/simulador_aux.cpp.s
 .PHONY : aux/simulador/simulador_aux.cpp.s
 
+database/tables.o: database/tables.cpp.o
+
+.PHONY : database/tables.o
+
+# target to build an object file
+database/tables.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/database/tables.cpp.o
+.PHONY : database/tables.cpp.o
+
+database/tables.i: database/tables.cpp.i
+
+.PHONY : database/tables.i
+
+# target to preprocess a source file
+database/tables.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/database/tables.cpp.i
+.PHONY : database/tables.cpp.i
+
+database/tables.s: database/tables.cpp.s
+
+.PHONY : database/tables.s
+
+# target to generate assembly for a file
+database/tables.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/database/tables.cpp.s
+.PHONY : database/tables.cpp.s
+
 error/Lexic/lexic.o: error/Lexic/lexic.cpp.o
 
 .PHONY : error/Lexic/lexic.o
@@ -424,6 +451,9 @@ help:
 	@echo "... aux/simulador/simulador_aux.o"
 	@echo "... aux/simulador/simulador_aux.i"
 	@echo "... aux/simulador/simulador_aux.s"
+	@echo "... database/tables.o"
+	@echo "... database/tables.i"
+	@echo "... database/tables.s"
 	@echo "... error/Lexic/lexic.o"
 	@echo "... error/Lexic/lexic.i"
 	@echo "... error/Lexic/lexic.s"

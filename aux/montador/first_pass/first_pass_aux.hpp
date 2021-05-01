@@ -16,13 +16,21 @@
 | Funções auxilares do algoritmo first pass |
 -------------------------------------------*/
 
+void defineBegindExternPublic(table::Instruction &instruction, table::Module &module);
+
+void defineLabels(table::Instruction &instruction, table::Module &module, int & posCounter);
+
+void defineVariables(table::Instruction &instruction, table::Module &module, int & posCounter);
+
+void correctDataAddr(table::Instructions_Set & data,table::Module & module, int posCounter_text);
+
 // Inserir a label na Tabela de Simbolos do módulo
 // Se a label ja foi definida, lançará erro
-void fPass_defineLabel(table::Instruction &instruction, table::Module &module, int posCounter);
+void fPass_defineLabel(table::Instruction &instruction, table::Module &module);
 
 // Inserir ou redefinir alguns símbolos criados pelas diretivas
 // extern, public ou begin
-void fPass_defineOperation(table::Instruction &instruction, table::Module &module, int &counter);
+void fPass_defineOperation(table::Instruction &instruction, table::Module &module);
 
 /*------------------------------------
 | Funções para formatar as instruções |

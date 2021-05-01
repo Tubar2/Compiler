@@ -18,7 +18,7 @@ void assert_correctNumOperands(const table::Instruction & instruction, table::Mo
 bool assert_constReceivesDecimal(const table::Instruction & instruction, table::Module & module);
 
 // Verifica que a operação recebe o número correto de operandos
-void assert_operationReceivesNumOperands(int size, const table::Instruction & instruction, table::Module & module);
+void assert_operationReceivesNumOperands(const table::Instruction & instruction, table::Module & module);
 
 // Verifica que o primeiro caractér é um digito
 void assert_firstLetterNotNumber(const std::string & word, table::Module & module, int lineCounter);
@@ -28,5 +28,7 @@ void assert_wordLengthLessThan50(const std::string & word, table::Module & modul
 
 // Verifica que a operação não é uma instruçao ou diretiva válida
 void assert_isNotDirectiveOrOperation(const table::Instruction & instruction, table::Module & module);
+
+void assert_modulesHaveEnd(table::Module_Set & modules);
 
 #endif //TRAB_SB_1_ERROR_HANDLING_HPP

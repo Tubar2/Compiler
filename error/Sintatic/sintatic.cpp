@@ -51,13 +51,35 @@ bool assert_constReceivesDecimal(const table::Instruction & instruction, table::
     return true;
 }
 
-void assert_operationReceivesNumOperands(int size, const table::Instruction & instruction, table::Module & module){
-    if (size != instruction.operands.size()){
+void assert_operationReceivesNumOperands(const table::Instruction & instruction, table::Module & module){
+    int size = table::directive_set[instruction.operation].operands;
+    if (instruction.operands.size() != size){
         module.pushError({
             "Diretiva '" + instruction.operation + "' com número ilegal de operandos. Esperava: " +
             std::to_string(size) + ". Recebeu: " + std::to_string(instruction.operands.size()),
             "Sintático",
             instruction.line
          });
+    }
+}
+
+void assert_modulesHaveEnd(table::Module_Set & modules){
+    if (modules.size() > 1){
+        for (auto & module : modules){
+            if (module.header.name.empty()){
+                module.pushError({
+                    "Módulo: " + module.filename +" não possui diretiva \"begin\"",
+                    "Sintático",
+                    0
+                });
+            }
+            if (!module.has_end) {
+                module.pushError({
+                    "Módulo: " + module.filename + " não possui diretiva \"end\"",
+                    "Sintático",
+                    static_cast<int>(module.instructions.size() + 1)
+                });
+            }
+        }
     }
 }

@@ -6,9 +6,9 @@
 
 
 int execDirective(const table::Instruction & instruction, table::Object_Code & obj_file, table::Module & module){
-    int size = table::directive_set[instruction.operation].size;
-    assert_operationReceivesNumOperands(size, instruction, module);
+    assert_operationReceivesNumOperands(instruction, module);
     if (instruction.operation == "space"){
+        module.header.bit_map += "0";
         obj_file.push_back(0);
         return 1;
     }
@@ -18,6 +18,7 @@ int execDirective(const table::Instruction & instruction, table::Object_Code & o
         if ( !assert_constReceivesDecimal(instruction, module) ) {
             return 0;
         }
+        module.header.bit_map += "0";
         obj_file.push_back(std::stoi(instruction.operands[0]));
         return 1;
     }
@@ -25,9 +26,8 @@ int execDirective(const table::Instruction & instruction, table::Object_Code & o
 }
 
 int execInstruction(const table::Instruction & instruction, table::Object_Code & obj_file, table::Module & module){
-    if (instruction.operation != "public"){
-        obj_file.push_back(table::inst_set[instruction.operation].opcode_num);
-    }
+    obj_file.push_back(table::inst_set[instruction.operation].opcode_num);
+    module.header.bit_map += "0";
     // Introduzindo cada operando no vetor-linha de operação
     for (auto & token : instruction.operands){
         assert_isNotDigit(token, module, instruction.line);
@@ -36,15 +36,13 @@ int execInstruction(const table::Instruction & instruction, table::Object_Code &
         // Adiconar simbolos não definidos na lista de erros
         bool tokenIsDefined = module.symbolsTable.find(token) != module.symbolsTable.end();
         if (tokenIsDefined){
-            if (!module.labelIsExtern(token)){
-                // Inserir o label (não externo) na tabela de definições
-                module.defineLabel(token, module.getLabelAddr(token));
-            } else {
+            if (module.labelIsExtern(token)){
                 module.insertLabelUseCase(token, obj_file.size());
+                module.header.bit_map += "0";
+            } else{
+                module.header.bit_map += "1";
             }
-            if (instruction.operation != "public") {
-                obj_file.push_back(module.getLabelAddr(token));
-            }
+            obj_file.push_back(module.getLabelAddr(token));
         }
     }
     assert_correctNumOperands(instruction, module);

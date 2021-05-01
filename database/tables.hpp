@@ -12,7 +12,10 @@ namespace table {
     /////////////////////
 
     // Flag de inserção no início ou fim da lista de instruções
-    static bool text_insertion_flag {false};
+    extern bool header_insertion_flag;
+    extern bool text_insertion_flag;
+
+    void reset_flags();
 
     // Tabela de diretivas (mapeia nome_da_diretiva -> memória que ocupa)
     static std::map<Directive_Name, Directive_Properties> directive_set{
@@ -20,7 +23,7 @@ namespace table {
             {"const",  {1,1}},
             {"extern", {0,0}},
             {"begin",  {0,0}},
-            {"end",    {0,0}},
+//            {"end",    {0,0}},
     };
 
     // Tabela de instruções (mapeia nome_da_instrução -> {tamanho, número_da_intrução})
@@ -40,6 +43,7 @@ namespace table {
             {"output", {2, 13}},
             {"stop",   {1, 14}},
             {"public", {0, 0}},
+            {"end", {0,0}},
     };
 
     // Mapeia o opcode (como um int) para o seu tamanho

@@ -96,7 +96,7 @@ clean: CMakeFiles/Trab_SB_1.dir/clean
 CMakeFiles/simulador.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulador.dir/build.make CMakeFiles/simulador.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulador.dir/build.make CMakeFiles/simulador.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles --progress-num=9,10,11,12 "Built target simulador"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles --progress-num=10,11,12,13 "Built target simulador"
 .PHONY : CMakeFiles/simulador.dir/all
 
 # Build rule for subdir invocation for target.
@@ -123,12 +123,12 @@ CMakeFiles/simulador.dir/clean:
 CMakeFiles/Trab_SB_1.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trab_SB_1.dir/build.make CMakeFiles/Trab_SB_1.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target Trab_SB_1"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9 "Built target Trab_SB_1"
 .PHONY : CMakeFiles/Trab_SB_1.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Trab_SB_1.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles 9
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Trab_SB_1.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ricardosantos/Documents/UnB/Trab_SB_1/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/Trab_SB_1.dir/rule

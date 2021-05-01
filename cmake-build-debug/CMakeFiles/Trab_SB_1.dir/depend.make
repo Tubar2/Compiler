@@ -21,6 +21,10 @@ CMakeFiles/Trab_SB_1.dir/aux/montador/second_pass/second_pass_aux.cpp.o: ../data
 CMakeFiles/Trab_SB_1.dir/aux/montador/second_pass/second_pass_aux.cpp.o: ../database/types.hpp
 CMakeFiles/Trab_SB_1.dir/aux/montador/second_pass/second_pass_aux.cpp.o: ../error/error_handling.hpp
 
+CMakeFiles/Trab_SB_1.dir/database/tables.cpp.o: ../database/tables.cpp
+CMakeFiles/Trab_SB_1.dir/database/tables.cpp.o: ../database/tables.hpp
+CMakeFiles/Trab_SB_1.dir/database/tables.cpp.o: ../database/types.hpp
+
 CMakeFiles/Trab_SB_1.dir/error/Lexic/lexic.cpp.o: ../database/tables.hpp
 CMakeFiles/Trab_SB_1.dir/error/Lexic/lexic.cpp.o: ../database/types.hpp
 CMakeFiles/Trab_SB_1.dir/error/Lexic/lexic.cpp.o: ../error/Lexic/lexic.cpp

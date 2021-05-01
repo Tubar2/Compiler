@@ -16,11 +16,11 @@ table::Module firstPass(const std::string& filename){
 
     // Variáveis auxiliares
     std::string line, word;     // 'Line' será a linha do arquivo e 'word' cada palavra separada por espaçp
-    int lineCounter{1}, posCounter{0};         // Contador de linha do arquivo texto
+    int lineCounter{1}, posCounter_data{0}, posCounter_text{0};         // Contador de linha do arquivo texto
     table::Module module{};
-    // TODO: Adicionar um header{} para diretivas e instruções begin, public e extern
-    table::Instructions_Set data{}, text{}; // Semi-Módulos contendo ou a seção de dados (.data) ou de texto (.text)
+    table::Instructions_Set header{}, data{}, text{}; // Semi-Módulos contendo ou a seção de dados (.data) ou de texto (.text)
 
+    module.filename = filename;
     // Lendo arquvo linha por linha e salvando linha em 'line'
     while (std::getline(file, line)){
         correctLabel(line);              // Corrige labels que possuam espaço em branco
@@ -32,6 +32,8 @@ table::Module firstPass(const std::string& filename){
             if (word[0] == ';') { instruction.comment = word; break; }
             // Transforma cada palavra para minusculo
             std::transform(word.begin(), word.end(), word.begin(), ::tolower);
+            // Após a diretiva end, o programa para
+            if (word == "end") {module.has_end = true; break;}
             // Verifica se é um label ao procurar por ':'
             if (word.find(':')!= std::string::npos){
                 instruction.label = checkLabel(word, module, lineCounter);
@@ -44,26 +46,35 @@ table::Module firstPass(const std::string& filename){
                 }
             }
         }
+        if (word == "end"){break;}
         instruction.line = lineCounter++;   // Adiciona à estrutura da instrução, sua linha de ocorrência no arquivo
         // Popula o semi-módulo com cada instrução devidamente estruturada
-        if (!instruction.label.empty()){
-            fPass_defineLabel(instruction, module, posCounter);
-        }
-        if (!instruction.operation.empty()){
-            fPass_defineOperation(instruction, module, posCounter);
-        }
-        if (table::text_insertion_flag){
+        if (table::header_insertion_flag){
+            defineBegindExternPublic(instruction, module);
+            header.push_back(instruction);
+        }else if (table::text_insertion_flag){
+            defineLabels(instruction, module, posCounter_text);
             text.push_back(instruction);
         } else {
+            defineVariables(instruction, module, posCounter_data);
             data.push_back(instruction);
         }
     }
-    // TODO: Verificar como será feita a seção de dados e texto, pois isso pode quebrar o programa
-    // Conjunto de instruções = text + data (data no final)
+    correctDataAddr(data,module, posCounter_text);
+
+    // Conjunto de instruções = header + .text + .data
     text.insert(text.end(), data.begin(), data.end());
-    module.instructions = text;
+    header.insert(header.end(), text.begin(), text.end());
+
+    module.instructions = header;
     file.close(); // Fecha arquivo
     return module;
+}
+
+void correctDefinitionsTable(table::Module & module){
+    for (auto & val : module.definitionsTable){
+        val.second = module.symbolsTable[val.first].addr;
+    }
 }
 
 table::Object_Code secondPass(table::Module & module){
@@ -71,11 +82,12 @@ table::Object_Code secondPass(table::Module & module){
     table::Object_Code obj_file {};
     // Iterando sobre cada linha de instrução
     for (const auto & instruction : module.instructions){
-        // Caso da operação ser uma só comentário, só seção ou Linha Vazia, respectivamento
+        // Caso da operação ser uma só comentário, só seção, Linha Vazia ou header, respectivamento
         if (
             ( !instruction.comment.empty() && instruction.label.empty() && instruction.operation.empty() )  ||
-            (instruction.operation == "section")                                                            ||
-            ( instruction.comment.empty() && instruction.label.empty() && instruction.operation.empty() )
+            ( instruction.operation == "section")                                                            ||
+            ( instruction.comment.empty() && instruction.label.empty() && instruction.operation.empty() )   ||
+            ( instruction.operation == "begin" || instruction.operation == "extern" || instruction.operation == "public" || instruction.operation == "end")
             ) { continue; }
         std::vector<std::string> line = {};
         // Checando caso a linha faça alguma operação
@@ -84,7 +96,7 @@ table::Object_Code secondPass(table::Module & module){
         bool isInstruction = table::inst_set.find(instruction.operation) != table::inst_set.end();
         if (!isInstruction){
             // Caso não existe, checar se é uma diretiva
-            bool isDirective = table::inst_set.find(instruction.operation) != table::inst_set.end();
+            bool isDirective = table::directive_set.find(instruction.operation) != table::directive_set.end();
             if (!isDirective) {
                 assert_isNotDirectiveOrOperation(instruction, module);
             } else {
@@ -100,52 +112,34 @@ table::Object_Code secondPass(table::Module & module){
     return obj_file;
 }
 
-//void removePendency(const std::vector<std::vector<std::string> *>& obj_file){
-//    for (auto pendency : table::pendenciesList){
-//        std::vector<std::string> pendentSymbols {};
-//        // Iterar sob cada símbolo pendente
-//        for (int i=pendency.pendency->size(); i>1; i--){
-//            // Se o simbolo está na tabela de símbolos substituir pela sua posição
-//            if (table::symbolsTable.find((*(pendency.pendency))[i-1]) != table::symbolsTable.end()){
-//                (*(pendency.pendency))[i-1] = std::to_string(table::symbolsTable[(*(pendency.pendency))[i-1]]);
-//            } else {
-//                pendentSymbols.push_back((*(pendency.pendency))[i-1]);
-//            }
-//        }
-//        if (!pendentSymbols.empty()){
-//            // Recuperar qua(l/is) símbolo/s não fo(i/ram) definido/s
-//            for (const auto& symbol : pendentSymbols){
-//                table::errorsList.push_back({"Símbolo '" + symbol + "' não definido", "Semântico", pendency.line});
-//            }
-//        }
-//    }
-//}
-//
-//bool checkForErrors(){
-//    if (!table::errorsList.empty()){
-//        std::sort(table::errorsList.begin(), table::errorsList.end());
-//        for (const auto & error : table::errorsList){
-//            std::cout << std::left;
-//            std::cout << std::setfill(' ') << std::setw(21) << "Erro "+error.error_type +": ";
-//            std::cout << std::setfill(' ') << std::setw(13)<< "Linha: "+std::to_string(error.line) + " ";
-//            std::cout << error.error << std::endl;
-//        }
-//        return true;
-//    }
-//    return false;
-//}
-//
-//void createObj(const std::vector<std::vector<std::string> *>& obj_file, const std::string& name){
-//    std::ofstream out_file {name, std::ios::trunc};
-//    if (!out_file){
-//        std::cerr << "Error creating exit file " << name << std::endl;
-//        exit(1);
-//    } else {
-//        for (auto line : obj_file){
-//            for (auto &str : *line){
-//                out_file << str << " ";
-//            }
-//        }
-//    }
-//    out_file.close();
-//}
+
+bool checkForErrors(table::Module & module){
+    if (!module.errorsList.empty()){
+        std::sort(module.errorsList.begin(), module.errorsList.end());
+        for (const auto & error : module.errorsList){
+            std::cout << std::left;
+            std::cout << std::setfill(' ') << std::setw(21) << "Erro "+error.error_type +": ";
+            std::cout << std::setfill(' ') << std::setw(13)<< "Linha: "+std::to_string(error.line) + " ";
+            std::cout << error.error << std::endl;
+        }
+        return true;
+    }
+    return false;
+}
+
+void createObj(const table::Module & module, const std::string& name){
+    std::ofstream out_file {name, std::ios::trunc};
+    if (!out_file){
+        std::cerr << "Error creating exit file " << name << std::endl;
+        exit(1);
+    } else {
+        out_file << "H: " << module.header.name << "\n";
+        out_file << "H: " << module.obj_code.size() << "\n";
+        out_file << "R: " <<  module.header.bit_map << "\n";
+        out_file << "T: ";
+        for (auto code : module.obj_code){
+            out_file << code << " ";
+        }
+    }
+    out_file.close();
+}

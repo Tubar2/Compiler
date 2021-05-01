@@ -1,27 +1,17 @@
-section data
-zero: const 0
-one: const 1
-older: space
-old: space
-new: space
-ai: limit: space
+mod_A: begin
+y: extern
+mod_b: extern
+public val
+public l1
 
-section text
-copy :
-    copy zero,older
-    copy one,old
-    input limit
-    output old
-front:
-    load older
-    add old
-    store new
-    sub limit
-    jmpp final
-    output new
-    copy old,older
-    copy new,old
-    jmp front
-final:
-    output limit
-    stop
+section .text
+    input y
+    load val
+    add y
+    store y
+    jmp mod_b
+l1: stop
+
+section .data
+val: const 5
+end
