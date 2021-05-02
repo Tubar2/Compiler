@@ -6,9 +6,10 @@ public mod_b
 
 section .data
 y: space
+y: space
 
 section .text
-    output y
+    output val
     output val
     output y
     jmp l1
