@@ -18,9 +18,9 @@ table::Operands createOperands(const std::string& operands_string){
     std::istringstream iss {operands_string};
     std::string operand {};
     while (std::getline(iss, operand, ',')){
-        if (operand == ".text" || operand == ".data") {
+        if ((operand == ".text" || operand == ".data") || (operand == "text" || operand=="data")) {
             table::header_insertion_flag = false;
-            if (operand == ".text") {
+            if (operand == ".text" || operand == "text") {
                 table::text_insertion_flag = true;
             }
         }

@@ -6,7 +6,6 @@ public mod_b
 
 section .data
 y: space
-y: space
 
 section .text
     output val
