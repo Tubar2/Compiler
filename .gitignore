@@ -7,3 +7,4 @@ CMakeLists.txt
 tests.zip
 *.o
 *.out
+/cmake-build-debug/
